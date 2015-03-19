@@ -1,65 +1,65 @@
 
 
-INSTRUCCIONES PARA PONER EN FUNCIONAMIENTO ESTAS P¡GINAS.
+INSTRUCCIONES PARA PONER EN FUNCIONAMIENTO ESTAS P√ÅGINAS.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
-Esta web que ofrecemos de modo complementario a la aplicaciÛn de la Intranet est· vinculada por completo a la misma. Se supone que la Intranet 
-ha sido instalada y est· operativa tras importar los datos de SÈneca y adaptarla a las caracterÌsticas del Centro. Elementos esenciales de 
-la web no podr·n funcionar sin los datos de la Intranet por lo que no debe instalarse si la Intranet no est· operativa. Estas p·ginas han sido 
-pensadas para ofrecer informaciÛn p˙blica a la comunidad educativa de un Centro, pero tambiÈn para ofrecer informaciÛn privada mediante acceso 
-restringido a padres / alumnos. Se presenta a modo de plantilla que los Centros pueden adaptar f·cilmente a sus peculiaridades. 
+Esta web que ofrecemos de modo complementario a la aplicaci√≥n de la Intranet est√° vinculada por completo a la misma. Se supone que la Intranet 
+ha sido instalada y est√° operativa tras importar los datos de S√©neca y adaptarla a las caracter√≠sticas del Centro. Elementos esenciales de 
+la web no podr√°n funcionar sin los datos de la Intranet por lo que no debe instalarse si la Intranet no est√° operativa. Estas p√°ginas han sido 
+pensadas para ofrecer informaci√≥n p√∫blica a la comunidad educativa de un Centro, pero tambi√©n para ofrecer informaci√≥n privada mediante acceso 
+restringido a padres / alumnos. Se presenta a modo de plantilla que los Centros pueden adaptar f√°cilmente a sus peculiaridades. 
 
-El elemento m·s importante de la web es el mÛdulo que permite el <<Acceso para Alumnos>> y sus padres de forma privada. Este espacio privado y 
-protegido por clave de usuario (NIE de SÈneca suministrado por el Centro) y contraseÒa (generada por el propio usuario) ofrece datos contenidos 
-o creados en la Intranet, y est· indisolublemte unido a esa aplicaciÛn. Las posibilidades ofrecidas son todas las que nuestro Centro ha 
+El elemento m√°s importante de la web es el m√≥dulo que permite el "Acceso para Alumnos" y sus padres de forma privada. Este espacio privado y 
+protegido por clave de usuario (NIE de S√©neca suministrado por el Centro) y contrase√±a (generada por el propio usuario) ofrece datos contenidos 
+o creados en la Intranet, y est√° indisolublemte unido a esa aplicaci√≥n. Las posibilidades ofrecidas son todas las que nuestro Centro ha 
 considerado relevantes, pero puede suceder que otro Centro considere inoportuno ofrecerlas a su comunidad educativa. Si alguna de las 
-secciones es considerada inadecuada (los Informes de TutorÌa, la descripciÛn detallada de los problemas de convivencia, etc.) para ser visible 
-por los padres, editar el men˙ de la secciÛn y comentarla para que desaparezca de la vista.  
+secciones es considerada inadecuada (los Informes de Tutor√≠a, la descripci√≥n detallada de los problemas de convivencia, etc.) para ser visible 
+por los padres, editar el men√∫ de la secci√≥n y comentarla para que desaparezca de la vista.  
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 
-1. Comienza editando el archivo conf_principal.php. AquÌ se encuentran las opciones fundamentales de la configuraciÛn de estas p·ginas. Los datos
+1. Comienza editando el archivo conf_principal.php. Aqu√≠ se encuentran las opciones fundamentales de la configuraci√≥n de estas p√°ginas. Los datos
  que se solicitan son simples y no plantean problemas.
  
-2. Puedes adaptar estas p·ginas a tu Centro y elegir las opciones que deseas presentar al p˙blico simplemente borrando o comentando 
-las opciones del Men˙ principal que es com˙n a todas las p·ginas. 
-Abre la p·gina "/menu.php" y procede a cambiarlo a tu gusto. Como puedes ver, algunas opciones (AMPA, SitueciÛn del Centro, Plan del Centro, etc) 
-sÛlo est·n activas para el IES Monterroso, pero las p·ginas est·n  presentes y preparadas para que las adaptes a tu Centro y actives la opciÛn 
+2. Puedes adaptar estas p√°ginas a tu Centro y elegir las opciones que deseas presentar al p√∫blico simplemente borrando o comentando 
+las opciones del Men√∫ principal que es com√∫n a todas las p√°ginas. 
+Abre la p√°gina "/menu.php" y procede a cambiarlo a tu gusto. Como puedes ver, algunas opciones (AMPA, Situeci√≥n del Centro, Plan del Centro, etc) 
+s√≥lo est√°n activas para el IES Monterroso, pero las p√°ginas est√°n  presentes y preparadas para que las adaptes a tu Centro y actives la opci√≥n 
 correspondiente en este menu.
 
-3. El logo del Centro que aparece colocado en la parte superior izquierda de la barra de men˙ es un archivo GIF de 60px de ancho. Se encuentra en el
-directorio raÌz de la p·gina.
+3. El logo del Centro que aparece colocado en la parte superior izquierda de la barra de men√∫ es un archivo GIF de 60px de ancho. Se encuentra en el
+directorio ra√≠z de la p√°gina.
 
-4. En el directorio /css vienen un conjunto de archivos que cambian los estilos, colores y tipografÌas de estas p·ginas. En el archivo de 
-configuraciÛn (/conf_principal.php) puedes elegir entre los m˙ltiples archivos que modifican el estilo de la web. Prueba y selecciona el preferido.
+4. En el directorio /css vienen un conjunto de archivos que cambian los estilos, colores y tipograf√≠as de estas p√°ginas. En el archivo de 
+configuraci√≥n (/conf_principal.php) puedes elegir entre los m√∫ltiples archivos que modifican el estilo de la web. Prueba y selecciona el preferido.
 
-5. Las fotos del Centro se encuentran en el directorio /reportajes. Sustit˙yelas por las que consideres convenientes o simplemente elmina el enlace 
- poniendo a 0 el valor de <<$mod_fotos>> en el archivo de configuraciÛn.
+5. Las fotos del Centro se encuentran en el directorio /reportajes. Sustit√∫yelas por las que consideres convenientes o simplemente elmina el enlace 
+ poniendo a 0 el valor de "$mod_fotos" en el archivo de configuraci√≥n.
  
-6. La p·gina dedicada al Equipo Directivo contiene datos de nuestro Centro en <<TelÈfonos y Contacto>>, asÌ como en el apartado <<Funciones>> 
-(que ha sido extraÌdo del Plan del Centro). Edita la p·gina con un editor de textos y sustituye los datos por los de tu propio Centro.
- En el men˙ de esta secciÛn hay un enlace llamado <<DocumentaciÛn>> que lleva a un directorio con nombre <<Documentos del Centro>>. Este 
- directorio se encuentra dentro del directorio de los Documentos que hemos escrito en el archivo de configuraciÛn. Nosotros colocamos ahÌ archivos de
+6. La p√°gina dedicada al Equipo Directivo contiene datos de nuestro Centro en "Tel√©fonos y Contacto", as√≠ como en el apartado "Funciones" 
+(que ha sido extra√≠do del Plan del Centro). Edita la p√°gina con un editor de textos y sustituye los datos por los de tu propio Centro.
+ En el men√∫ de esta secci√≥n hay un enlace llamado "Documentaci√≥n" que lleva a un directorio con nombre "Documentos del Centro". Este 
+ directorio se encuentra dentro del directorio de los Documentos que hemos escrito en el archivo de configuraci√≥n. Nosotros colocamos ah√≠ archivos de
  texto en formato PDF con el Plan del Centro, por ejemplo, y otros archivos que el Centro considera que es conveniente exponer a la Comunidad Educativa
  del mismo.
  
-7. La p·gina de los Departamentos toma los datos de los Departamentos importados en la Intranet y supone que en el directorio de documentaciÛn 
-existe un subdirectorio llamado <<departamentos>> con subdirectorios con el nombre de los mismos (departamentos/Filosofia, departamentos/Educacion Fisica, 
+7. La p√°gina de los Departamentos toma los datos de los Departamentos importados en la Intranet y supone que en el directorio de documentaci√≥n 
+existe un subdirectorio llamado "departamentos" con subdirectorios con el nombre de los mismos (departamentos/Filosofia, departamentos/Educacion Fisica, 
 etc.). 
-Estos directorios deben ser creados a mano con un nombre igual al del departamento en la Intranet, pero sin acentos. ni aÒadidos 
-(P.E.S., Bil, etc). AhÌ se pueden colocar materiales que los Departamentos consideren ˙tiles y visibles para la comunidad educativa. 
-Si no quieres crear un directorio para los Departamentos, modifica el valor de <<$mod_departamentos>> en el archivo de configuraciÛn escribiendo 
+Estos directorios deben ser creados a mano con un nombre igual al del departamento en la Intranet, pero sin acentos. ni a√±adidos 
+(P.E.S., Bil, etc). Ah√≠ se pueden colocar materiales que los Departamentos consideren √∫tiles y visibles para la comunidad educativa. 
+Si no quieres crear un directorio para los Departamentos, modifica el valor de "$mod_departamentos" en el archivo de configuraci√≥n escribiendo 
 un 0 como valor.
 
-8. Las p·ginas dedicadas a los diferentes estudios ofertados por el Centro contienen datos generales para la ESO y el Bachillerato. Pero tambiÈn
-contienen datos particulares sobre estudios especÌficos de nuestro Centro. Para adaptar la informaciÛn a tu Centro debes editar estas p·ginas 
+8. Las p√°ginas dedicadas a los diferentes estudios ofertados por el Centro contienen datos generales para la ESO y el Bachillerato. Pero tambi√©n
+contienen datos particulares sobre estudios espec√≠ficos de nuestro Centro. Para adaptar la informaci√≥n a tu Centro debes editar estas p√°ginas 
 y para ello te puedes servir de cualquiera de ellas como plantilla. La estructura es sencilla y no debe plantear dificultades.
 
-9. En la parte derecha de la p·gina principal hay una secciÛn con el tÌtulo <<Otras p·ginas>>
- que contiene enlaces a p·ginas relacionadas con nuestro Centro. EdÌtalas a tu gusto para adaptarlas a tu Centro. 
- Esta secciÛn se encuentra en el archivo <<fijos.php> que puedes encontrar en el directorio raÌz. 
+9. En la parte derecha de la p√°gina principal hay una secci√≥n con el t√≠tulo "Otras p√°ginas"
+ que contiene enlaces a p√°ginas relacionadas con nuestro Centro. Ed√≠talas a tu gusto para adaptarlas a tu Centro. 
+ Esta secci√≥n se encuentra en el archivo fijos.ph que puedes encontrar en el directorio ra√≠z. 
  
-10. El <<Calendario>> de la p·gina principal toma los datos del Calendario del Centro que edita el Equipo directivo desde la Intranet. De la misma manera, 
-las <<Noticias>> se toman de la Intranet cuando hayan sido creadas por el Equipo directivo (y marcadas para enviar a la p·gina p˙blica del Centro).
+10. El Calendario de la p√°gina principal toma los datos del Calendario del Centro que edita el Equipo directivo desde la Intranet. De la misma manera, 
+las Noticias se toman de la Intranet cuando hayan sido creadas por el Equipo directivo (y marcadas para enviar a la p√°gina p√∫blica del Centro).
  
