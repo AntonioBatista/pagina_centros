@@ -17,7 +17,7 @@
 	mysql_connect ($host, $user, $pass);
 	mysql_select_db ($db);		
 
-	$al_primaria = "SELECT distinct colegio FROM alma_primaria order by colegio";
+	$al_primaria = "SELECT distinct colegio FROM transito_control order by colegio";
 	$alum_primaria = mysql_query($al_primaria);
 	while ($cole=mysql_fetch_array($alum_primaria)) {
 		echo "<option>$cole[0]</option>";

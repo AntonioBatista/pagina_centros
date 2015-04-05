@@ -103,7 +103,7 @@ if (mysql_num_rows($ya_hay)>0) {
 <hr>
 <h5 class="text-info">Notas Finales</h5>
 <label>Lengua</label>
-<select name="leng" class="input input-mini">
+<select name="leng" class="input input-mini" required>
 <option><? echo $leng;?></option>
   <option>1</option>
   <option>2</option>
@@ -116,9 +116,8 @@ if (mysql_num_rows($ya_hay)>0) {
   <option>9</option>
   <option>10</option>
 </select>
-&nbsp;&nbsp;
 <label>Matemáticas</label>
-<select name="mat" class="input input-mini">
+<select name="mat" class="input input-mini" required>
   <option><? echo $mat;?></option>
   <option>1</option>
   <option>2</option>
@@ -131,9 +130,8 @@ if (mysql_num_rows($ya_hay)>0) {
   <option>9</option>
   <option>10</option>
 </select>
-&nbsp;&nbsp;
 <label>Inglés</label>
-<select name="ing" class="input input-mini">
+<select name="ing" class="input input-mini" required>
 <option><? echo $ing;?></option>
   <option>1</option>
   <option>2</option>
@@ -146,9 +144,8 @@ if (mysql_num_rows($ya_hay)>0) {
   <option>9</option>
   <option>10</option>
 </select>
-&nbsp;&nbsp;
 <label>Conocimiento</label>
-<select name="con" class="input input-mini">
+<select name="con" class="input input-mini" required>
 <option><? echo $con;?></option>
   <option>1</option>
   <option>2</option>
@@ -161,9 +158,8 @@ if (mysql_num_rows($ya_hay)>0) {
   <option>8</option>
   <option>10</option>
 </select>
-&nbsp;&nbsp;
 <label>Ed. Física</label>
-<select name="edfis" class="input input-mini">
+<select name="edfis" class="input input-mini" required>
 <option><? echo $edfis;?></option>
   <option>1</option>
   <option>2</option>
@@ -176,9 +172,8 @@ if (mysql_num_rows($ya_hay)>0) {
   <option>9</option>
   <option>10</option>
 </select>
-&nbsp;&nbsp;
 <label>Música</label>
-<select name="mus" class="input input-mini">
+<select name="mus" class="input input-mini" required>
 <option><? echo $mus;?></option>
   <option>1</option>
   <option>2</option>
@@ -191,9 +186,8 @@ if (mysql_num_rows($ya_hay)>0) {
   <option>9</option>
   <option>10</option>
 </select>
-&nbsp;&nbsp;
 <label>Plástica</label>
-<select name="plas" class="input input-mini">
+<select name="plas" class="input input-mini" required>
 <option><? echo $plas;?></option>
   <option>1</option>
   <option>2</option>
@@ -342,24 +336,24 @@ if (mysql_num_rows($ya_hay)>0) {
 <legend class="muted">ÁMBITO SOCIAL Y DE LA PERSONALIDAD</legend>
 <h5 class="text-info">Integración en el Aula</h5>
 <label class="radio inline">
-  <input type="radio" name="integra" value="5" <? echo $int5;?>> Líder
+  <input type="radio" name="integra" value="5" <? echo $int5;?> required> Líder
 </label>
 <label class="radio inline">
-  <input type="radio" name="integra" value="1" <? echo $int1;?>> Integrado
+  <input type="radio" name="integra" value="1" <? echo $int1;?> required> Integrado
 </label>
 <label class="radio inline">
-  <input type="radio" name="integra" value="2" <? echo $int2;?>> Poco integrado
+  <input type="radio" name="integra" value="2" <? echo $int2;?> required> Poco integrado
 </label>
 <label class="radio inline">
-  <input type="radio" name="integra" value="3" <? echo $int3;?>> Se aísla
+  <input type="radio" name="integra" value="3" <? echo $int3;?> required> Se aísla
 </label>
 <label class="radio inline">
-  <input type="radio" name="integra" value="4" <? echo $int4;?>> Alumno rechazado
+  <input type="radio" name="integra" value="4" <? echo $int4;?> required> Alumno rechazado
 </label>
 <hr>
 <h5 class="text-info">Actitud, comportamiento, estilo de aprendizaje</h5>
 <p class="help-block">Colaborador/a, Trabajador, Atento, Impulsivo.. Indicar los aspectos más significativos</p>
-<textarea name="actitud" rows="5" class="input input-xxlarge"><? echo $actitud;?></textarea>
+<textarea name="actitud" rows="5" class="input input-xxlarge" required><? echo $actitud;?></textarea>
 <hr>
 <h5 class="text-info">Lo que mejor "funciona" con el Alumno</h5>
 <textarea name="funciona" rows="5" class="input input-xxlarge"><? echo $funciona;?></textarea>
@@ -369,15 +363,15 @@ if (mysql_num_rows($ya_hay)>0) {
 <legend class="muted">RELACIÓN COLEGIO - FAMILIA</legend>
 <h5 class="text-info">Tipo de relación con el Colegio</h5>
 <label class="radio">
-  <input type="radio" name="relacion" value="3" <? echo $rel3;?>> Colaboración constante
+  <input type="radio" name="relacion" value="3" <? echo $rel3;?> required> Colaboración constante
 </label>
 <br>
 <label class="radio">
-  <input type="radio" name="relacion" value="1" <? echo $rel1;?>> Colaboración sólo cuando el Centro la ha solicitado
+  <input type="radio" name="relacion" value="1" <? echo $rel1;?> required> Colaboración sólo cuando el Centro la ha solicitado
 </label>
 <br>
 <label class="radio">
-  <input type="radio" name="relacion" value="2" <? echo $rel2;?>> Demanda constante por parte de los Padres
+  <input type="radio" name="relacion" value="2" <? echo $rel2;?> required> Demanda constante por parte de los Padres
 </label>
 <hr>
 <h5 class="text-info">Razones para la ausencia de relación con el Colegio</h5>
@@ -389,21 +383,21 @@ if (mysql_num_rows($ya_hay)>0) {
 <legend class="muted">DISCIPLINA</legend>
 <h5 class="text-info">Comportaiento disruptivo</h5>
 <label class="radio inline">
-  <input type="radio" name="disruptivo" value="3" <? echo $dis3;?>> Nunca
+  <input type="radio" name="disruptivo" value="3" <? echo $dis3;?> required> Nunca
 </label>
 <label class="radio inline">
-  <input type="radio" name="disruptivo" value="1" <? echo $dis1;?>> Ocasionalmente
+  <input type="radio" name="disruptivo" value="1" <? echo $dis1;?> required> Ocasionalmente
 </label>
 <label class="radio inline">
-  <input type="radio" name="disruptivo" value="2" <? echo $dis2;?>> Alumno disruptivo
+  <input type="radio" name="disruptivo" value="2" <? echo $dis2;?> required> Alumno disruptivo
 </label>
 <hr>
 <h5 class="text-info">El alumno ha sido expulsado en alguna ocasión</h5>
 <label class="radio inline">
-  <input type="radio" name="expulsion" value="1" <? echo $exp1;?>> No
+  <input type="radio" name="expulsion" value="1" <? echo $exp1;?> required> No
 </label>
 <label class="radio inline">
-  <input type="radio" name="expulsion" value="2" <? echo $exp2;?>> Sí
+  <input type="radio" name="expulsion" value="2" <? echo $exp2;?> required> Sí
 </label>
 <hr>
 <br>

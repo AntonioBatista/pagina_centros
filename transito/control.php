@@ -3,7 +3,7 @@
 <? include("../funciones.php");
 //variables();
 ?>
-<div class="span10 offset1"><br>
+<div class="span8 offset2"><br>
 <h3 align="center"><i class='icon icon-folder-open'> </i> Informe de
 Tránsito para Alumnos de Primaria.</h3>
 <?
@@ -79,7 +79,7 @@ if ($num_cole>0 or $auth=="1") {
 	onchange="submit()" />
 <option><? echo $unidad;?></option>
 	<?
-	$al_primaria = "SELECT distinct unidad FROM alma_primaria where colegio = '$colegio' order by unidad";
+	$al_primaria = "SELECT distinct unidad FROM alma_primaria where colegio = 'C.E.I.P. $colegio' order by unidad";
 	$alum_primaria = mysql_query($al_primaria);
 	while ($cole=mysql_fetch_array($alum_primaria)) {
 		echo "<option>$cole[0]</option>";
@@ -90,7 +90,7 @@ if ($num_cole>0 or $auth=="1") {
 	onchange="submit()" />
 <option vlaue="<? echo "$claveal:$nombre_al";?>"><? echo $nombre_al;?></option>
 	<?
-	$al = "SELECT distinct claveal, apellidos, nombre FROM alma_primaria where colegio = '$colegio' and unidad = '$unidad' order by apellidos, nombre";
+	$al = "SELECT distinct claveal, apellidos, nombre FROM alma_primaria where colegio = 'C.E.I.P. $colegio' and unidad = '$unidad' order by apellidos, nombre";
 	$alum = mysql_query($al);
 	while ($alumn=mysql_fetch_array($alum)) {
 		echo "<option value='$alumn[0]:$alumn[1], $alumn[2]'>$alumn[1], $alumn[2]</option>";
@@ -105,7 +105,7 @@ if ($num_cole>0 or $auth=="1") {
 	?>
 <div class="row well">
 <div align="center">
-<p class="lead muted">Colegio <? echo $colegi;?></p>
+<p class="lead muted">C.E.I.P. <? echo $colegi;?></p>
 <h4>Expediente académico del alumno/a <small> Curso académico: <? echo $curso_actual?></small></h4>
 <legend class="text-error"><?php echo $nombre_alumn; ?> </legend></div>
 <div class="span5 offset1">
@@ -154,8 +154,7 @@ if ($num_cole>0 or $auth=="1") {
 }
 
 else  {
-	echo '<div class="span9">
-<div class="span8 offset2">
+	echo '<div class="span8 offset2">
 <div align="center">
 <hr />';
 	echo "<br /><div class='alert alert-error' style='max-width:450px;margin:auto'><legend>Atenci&oacute;n:</legend><p>Debes introducir una <b>Clave del Centro</b> válida para entrar en estas páginas. Si eres alumno de este Centro, <em>debes conseguir tu clave de acceso a través del Tutor, Administración o Jefatura de Estudios del Centro</em> para poder entrar en estas páginas</p></div>";
