@@ -28,6 +28,8 @@ exit;
 	mysql_select_db ($db);
 ?>
 <?
+mysql_query("ALTER TABLE `matriculas` CHANGE `colegio` `colegio` VARCHAR(64) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL DEFAULT '', CHANGE `otrocolegio` `otrocolegio` VARCHAR(64) CHARACTER SET latin1 COLLATE latin1_spanish_ci NULL DEFAULT NULL;");
+
 if($_POST['enviar'] =="Enviar los datos de la Matrícula"){	
 
 foreach($_POST as $key => $val)

@@ -16,6 +16,8 @@ include("../funciones.php");
 $connection = mysql_connect($host,$user,$pass) or die ("Imposible conectar con la Base de datos");
 mysql_select_db($db) or die ("Imposible seleccionar base de datos!");
 
+mysql_query("ALTER TABLE `matriculas_bach` CHANGE `colegio` `colegio` VARCHAR(64) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL DEFAULT '', CHANGE `otrocolegio` `otrocolegio` VARCHAR(64) CHARACTER SET latin1 COLLATE latin1_spanish_ci NULL DEFAULT NULL;");
+
 // Asignaturas y Modalidades
 $it11 = array("Bachillerato de Ciencias y Tecnología", "Vía de Ciencias e Ingeniería", "Vía de Ciencias de la Naturaleza y la Salud", "Ciencias y Tecnología");
 $it12 = array("Bachillerato de Humanidades y Ciencias Sociales", "Vía de Humanidades", "Vía de Ciencias Sociales", "Humanidades y Ciencias Sociales");
