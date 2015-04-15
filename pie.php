@@ -6,7 +6,7 @@
         <p class="muted"><? echo $dirección_del_centro;?> <? echo $codigo_postal_del_centro;?> <? echo $localidad_del_centro;?> Málaga</p>
         <p class="muted">Contacto: <a href="mailto:<? echo $email_del_centro;?>"> Correo</a> Tfno: <? echo $telefono_del_centro;?></p>
         <? if($monterroso==1){ ?>
-	    <p><a href="<? echo $dominio;?>situa/index.php">Cómo llegar...</a></p>
+	    <p><a href="situa/index.php">Cómo llegar...</a></p>
 		<? } ?>        
       </div>
     </footer>

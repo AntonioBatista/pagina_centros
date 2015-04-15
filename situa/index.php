@@ -43,7 +43,7 @@ $activo3="";
 if (strstr($_SERVER['REQUEST_URI'],'index.php')==TRUE) {$activo1 = ' class="active" ';}
 elseif (strstr($_SERVER['REQUEST_URI'],'notas')==TRUE){ $activo2 = ' class="active" ';}
 elseif (strstr($_SERVER['REQUEST_URI'],'doc')==TRUE){ $activo3 = ' class="active" ';}
-include("conf_principal.php");
+include("../conf_principal.php");
 ?>
 <div class="navbar">
   <div class="navbar-inner" style="padding-left:0px">
