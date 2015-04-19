@@ -1,2 +1,14 @@
 
 /conf_principal.php
+
+*.prefs
+
+*.container
+
+.buildpath
+
+.project
+
+.settings/.jsdtscope
+
+*.name
