@@ -30,13 +30,22 @@ if (mysql_num_rows($ya_hay)>0) {
  if (stristr($refuerzo,"Ing")==TRUE) {$ref3="checked";}
 ?>
 <? 
- if (stristr($adcurr,"Len")==TRUE) {$ac1="checked";}
- if (stristr($adcurr,"Mat")==TRUE) {$ac2="checked";}
- if (stristr($adcurr,"Ing")==TRUE) {$ac3="checked";}
+ if (stristr($adcurrsign,"1")==TRUE) {$acs="checked";}
+ if (stristr($adcurrnosign,"1")==TRUE) {$acns="checked";}
+ if (stristr($necadcurrsign,"1")==TRUE) {$nacs="checked";}
+ if (stristr($necadcurrnosign,"1")==TRUE) {$nacns="checked";}
 ?>
 <? 
  if ($acompanamiento) {$acomp="checked";}
  if ($exento) {$exen="checked";}
+?>
+<? 
+if ($PT_AL=="SI") {$ptal1="checked";}elseif ($PT_AL=="NO") {$ptal2="checked";}
+if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$ptalaula2="checked";}
+?>
+<? 
+ if ($atal) {$atl="checked";}
+ if ($necatal) {$necatl="checked";}
 ?>
 <? if ($nacion==1) {$n1="checked";}elseif ($nacion==2) {$n2="checked";}elseif ($nacion==3) {$n3="checked";}elseif ($nacion==4) {$n4="checked";} ?>
 <? if ($integra==1) {$int1="checked";}elseif ($integra==2) {$int2="checked";}elseif ($integra==3) {$int3="checked";}elseif ($integra==4) {$int4="checked";}elseif ($integra==5) {$int5="checked";} ?>
@@ -235,8 +244,10 @@ if (mysql_num_rows($ya_hay)>0) {
   <input type="checkbox" name="dificultad[]" value="7" <? echo $d7;?>>  Tiene dificultades de cálculo.
 </label>
 <hr>
+<br>
 
-<h5 class="text-info">Refuerzos o Adaptaciones</h5>
+<legend class="muted">ÁMBITO ACADÉMICO</legend>
+<h5 class="text-info">Refuerzos</h5>
 <h6 class="text-success">Ha tenido Refuerzo:</h6>
 <label class="checkbox inline">
   <input type="checkbox" name="refuerzo[]" value="Lengua " <? echo $ref1;?>> Lengua
@@ -272,50 +283,54 @@ if (mysql_num_rows($ya_hay)>0) {
   <option>2</option>
   <option>3</option>
 </select>
-<h6 class="text-success">Ha tenido Adaptación Curricular:</h6>
-<label class="checkbox inline">
-  <input type="checkbox" name="adcurr[]" value="Lengua " <? echo $ac1;?>> Lengua
-</label>
-<label class="checkbox inline">
-  <input type="checkbox" name="adcurr[]" value="Matemáticas " <? echo $ac2;?>> Matemáticas
-</label>
-<label class="checkbox inline">
-  <input type="checkbox" name="adcurr[]" value="Inglés " <? echo $ac3;?>> Inglés
-</label>
-<h6 class="text-success">Necesita Adaptación:</h6>
-<p class="help-block">En caso necesario señalar orden de preferencia del Refuerzo.</p>
-<label>Lengua</label>
-<select name="necaclen" class="input input-small">
-<option><? echo $necaclen;?></option>
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-</select>
-&nbsp;&nbsp;
-<label>Matemáticas</label>
-<select name="necacmat" class="input input-small">
-<option><? echo $necacmat;?></option>
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-</select>
-&nbsp;&nbsp;
-<label>Inglés</label>
-<select name="necacing" class="input input-small">
-<option><? echo $necacing;?></option>
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-</select>
+
 <h6 class="text-success">Exención</h6>
 <label class="checkbox inline">
   <input type="checkbox" name="exento" value="1" <? echo $exen;?>> Alumnado que por sus dificultades no se le recomienda cursar optativa
 </label>
+
 <h6 class="text-success">Programa de Acompañamiento Escolar</h6>
 <label class="checkbox inline">
   <input type="checkbox" name="acompanamiento" value="1" <? echo $acomp;?>> Se aconseja asistencia al Programa de Acompañamiento Escolar
 </label>
 <hr>
+
+<h5 class="text-info">Adaptaciones Curriculares</h5>
+<h6 class="text-success">Ha tenido Adaptación Curricular:</h6>
+<label>Areas cursadas en la Adaptación Curricular Significativa
+  <input type="text" class="input input-xlarge" name="areasadcurrsign" value="<? echo $areasadcurrsign;?>" caption="Tarari">
+</label>
+<br>
+<label>Areas cursadas en la Adaptación Curricular No Significativa
+  <input type="text" class="input input-xlarge" name="areasadcurrnosign" value="<? echo $areasadcurrnosign;?>" >
+</label>
+<h6 class="text-success">Necesita Adaptación Curricular:</h6>
+<label>Areas cursadas en la Adaptación Curricular Significativa
+  <input type="text" class="input input-xlarge" name="necareasadcurrsign" value="<? echo $necareasadcurrsign;?>">
+</label>
+<br>
+<label>Areas cursadas en la Adaptación Curricular No Significativa
+  <input type="text" class="input input-xlarge" name="necareasadcurrnosign" value="<? echo $necareasadcurrnosign;?>" >
+</label>
+
+<h6 class="text-success">¿Ha sido atendido por PT o AL?</h6>
+<label class="radio inline">
+  <input type="radio" name="PT_AL" value="SI" <? echo $ptal1;?>> Sí
+</label>
+&nbsp;
+<label class="radio inline">
+  <input type="radio" name="PT_AL" value="NO" <? echo $ptal2;?>> No
+</label>
+<br>
+<label class="radio inline">
+  <input type="radio" name="PT_AL_aula" value="Aula" <? echo $ptalaula1;?>> Dentro del Aula
+</label>
+&nbsp;
+<label class="radio inline">
+  <input type="radio" name="PT_AL_aula" value="Fuera" <? echo $ptalaula2;?>> Fuera del Aula
+</label>
+<hr>
+
 <h5 class="text-info">Alumnado de otra nacionalidad</h5>
 <label class="radio inline">
   <input type="radio" name="nacion" value="4" <? echo $n4;?>> No conoce el español
@@ -329,6 +344,15 @@ if (mysql_num_rows($ya_hay)>0) {
 </label>
 <label class="radio inline">
   <input type="radio" name="nacion" value="3" <? echo $n3;?>> Puede seguir el Currículo
+</label>
+<br>
+<br>
+<label class="checkbox">
+  <input type="checkbox" name="atal" value="SI" <? echo $atl;?>> Ha sido atendido en el aula de ATAL
+</label>
+<br>
+<label class="checkbox">
+  <input type="checkbox" name="necatal" value="SI" <? echo $necatl;?>> Necesita asistir al aula de ATAL
 </label>
 <hr>
 <br>
