@@ -72,10 +72,10 @@ while($men = mysql_fetch_row($men2))
 {
 $fechacompl = explode(" ",$men[0]);
 $fech = explode("-",$fechacompl[0]);
-$fechaenv = "el día $fech[2] del $fech[1] de $fech[0], a las $fechacompl[1]";
+$fechaenv = "el dÃ­a $fech[2] del $fech[1] de $fech[0], a las $fechacompl[1]";
  echo "<br /><div class='alert alert-success' 
-style='width:500px;margin:auto;'><h4>Mensaje de confirmación:</h4><br>El 
-Tutor ha recibido el mensaje enviado desde estas páginas 
+style='width:500px;margin:auto;'><h4>Mensaje de confirmaciÃ³n:</h4><br>El 
+Tutor ha recibido el mensaje enviado desde estas pÃ¡ginas 
 $fechaenv</div><br /><br />";
 mysql_query("UPDATE mensajes SET recibidopadre = '1' WHERE id = $men[2]");
 }
@@ -90,9 +90,9 @@ mysql_query("UPDATE mens_profes SET recibidoprofe = '1' WHERE id_profe =
 $t_mens = mysql_query("select asunto from mens_texto where id = (select distinct id_texto from mens_profes where id_profe = '".$_POST['verifica']."')");
 $mens_texto = mysql_fetch_array($t_mens);
 $asunto_mensaje = $mens_texto[0];
-$asunto = "Mensaje de confirmación";
+$asunto = "Mensaje de confirmaciÃ³n";
 $texto = "El mensaje enviado a los padres del alumno/a $todosdatos ($asunto_mensaje) ha 
-sido recibido y leído por estos en la Página Principal del Centro.";
+sido recibido y leÃ­do por estos en la PÃ¡gina Principal del Centro.";
 $ip = $_SERVER['REMOTE_ADDR'];
 $actualiza = mysql_query("insert into mensajes 
 (dni,claveal,asunto,texto,ip,unidad, recibidotutor, recibidopadre) values 
@@ -132,7 +132,7 @@ title="<? echo substr($texto,0,132)."...";?>">
 <div class="modal hide fade" id="mensaje<? echo $n_mensajes;?>">
 
   <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">×</button>
+    <button type="button" class="close" data-dismiss="modal">Ã—</button>
     <h4>Mensaje del Tutor <? echo $origen;?> </h4><br /><small>Enviado <? echo 
 $fechaenv;?></small>
   </div>
@@ -150,7 +150,7 @@ href="mensajes.php?verifica='.$id.'&clave_al='.$clave_al.'&asunto='.$asunto.'&or
 class="btn btn-primary">Responder</a>';
 ?>
 <button type="submit" name="verifica" value="<?php  echo $id; ?>" class="btn 
-btn-danger">Leído</a>  
+btn-danger">LeÃ­do</a>  
 <input type='hidden' name = 'id_ver' value = '<? echo $id; ?>' />
 </form>
 </div>
@@ -162,7 +162,7 @@ btn-danger">Leído</a>
 
   
   $SQL = "select distinct apellidos, nombre, UNIDAD, DNI, fecha, 
-domicilio, codpostal, localidad, telefono, telefonourgencia, control.correo, 
+domicilio, codpostal, localidadnacimiento, telefono, telefonourgencia, control.correo, 
  padre, dnitutor, alma.claveal, curso from 
 alma, control where alma.claveal=control.claveal and alma.claveal = 
 '$clave_al'";
@@ -173,7 +173,7 @@ alma, control where alma.claveal=control.claveal and alma.claveal =
 				//$claveal=$row[16];
 
                 do {
-		echo "<p class='lead muted' align='center'><i class='icon icon-user'> </i> Información del Alumno registrada en el Centro</p><hr />";	
+		echo "<p class='lead muted' align='center'><i class='icon icon-user'> </i> InformaciÃ³n del Alumno registrada en el Centro</p><hr />";	
 	
 		echo '<br><div class="span5 offset-1">';	
 		echo "<table class='table table-striped table-bordered'>";
@@ -185,11 +185,11 @@ alma, control where alma.claveal=control.claveal and alma.claveal =
 			<tr><th>DNI</th><td class='text-success'>$row[3]</td></tr>
 			<tr><th>FECHA</th><td class='text-success'>$row[4]</td></tr>
 			<tr><th>DOMICILIO</th><td class='text-success'>$row[5]</td></tr>
-			<tr><th>CÓDIGO POSTAL</th><td class='text-success'>$row[6]</td></tr>
+			<tr><th>CÃ“DIGO POSTAL</th><td class='text-success'>$row[6]</td></tr>
 			<tr><th>LOCALIDAD DE NACIMIENTO</th><td class='text-success'>$row[7]</td></tr>
-			<tr><th>TELÉFONO</th><td class='text-success'>$row[8]</td></tr>
+			<tr><th>TELÃ‰FONO</th><td class='text-success'>$row[8]</td></tr>
 			<tr><th>TFNO. URGENCIAS</th><td class='text-success'>$row[9]</td></tr>
-			<tr><th>CORREO ELECTRÓNICO</th><td class='text-success'>$row[10]</td></tr>
+			<tr><th>CORREO ELECTRÃ“NICO</th><td class='text-success'>$row[10]</td></tr>
 			<tr><th>TUTOR</th><td class='text-success'>$row[11]</td></tr>
 			<tr><th>DNI TUTOR</th><td class='text-success'>$row[12]</td><tr>";
 
@@ -202,7 +202,7 @@ alma, control where alma.claveal=control.claveal and alma.claveal =
 <div class="span5 ">	
   <div class="well well-large">	
   <?
-$ft=mysql_query("select datos, tamaño from fotos where nombre = 
+$ft=mysql_query("select datos, tamaÃ±o from fotos where nombre = 
 '$clave_al.jpg'");
 	if (mysql_num_rows($ft)>'0') {
 		$ft1=mysql_fetch_array($ft);
@@ -213,12 +213,12 @@ width='200' height='240' class='img-polaroid' /></div>";
 ?>
   <br />
 
-  <p class="text-info">Esta página ofrece los datos registrados en la 
-<strong>Matrícula</strong> del Alumno en el Centro, tal como fueron presentados 
+  <p class="text-info">Esta pÃ¡gina ofrece los datos registrados en la 
+<strong>MatrÃ­cula</strong> del Alumno en el Centro, tal como fueron presentados 
 por el Alumno o sus Padres. <br><em>En el caso de que alguno de los datos sea incorrecto 
-o haya cambiado, es conveniente comunicarlo en la Administración del Instituto 
-para su rectificación.</em> <br>Esto es especialmente importante en el caso de la 
-dirección postal y los teléfonos de contacto, ya que de ellos dependen las 
+o haya cambiado, es conveniente comunicarlo en la AdministraciÃ³n del Instituto 
+para su rectificaciÃ³n.</em> <br>Esto es especialmente importante en el caso de la 
+direcciÃ³n postal y los telÃ©fonos de contacto, ya que de ellos dependen las 
 comunicaciones entre el Centro y la familia del alumno.</p>
   </div>
 </div>
