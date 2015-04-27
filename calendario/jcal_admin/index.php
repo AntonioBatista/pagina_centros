@@ -207,14 +207,15 @@ for ($zz = 1; $zz <= $numdays; $zz++) {
 	if ($result_found != 1) { //Buscar actividad para el dóa y marcarla
 		$sql_currentday = "$year-$month-$zz";
 
-		$eventQuery = "SELECT title FROM cal WHERE eventdate = '$sql_currentday';";
+		$eventQuery = "SELECT nombre FROM calendario WHERE fechaini = '$sql_currentday'";
+		//echo $eventQuery;
 		$eventExec = mysql_query ( $eventQuery );
 		if (mysql_num_rows($eventExec)>0) {
-			while ( $row = mysql_fetch_array ( $eventExec ) ) {
-			if (strlen ( $row ["title"] ) > 0) {
+			$row = mysql_fetch_array ( $eventExec ); 
+			if (strlen ( $row ["nombre"] ) > 0) {
         echo "<td style='background-color:#f89406;cursor:pointer;' onClick='window.location='" .$_SERVER['PHP_SELF']. "?year=$year&today=$zz&month=$month';'><a href='".$_SERVER['PHP_SELF']."?year=$year&today=$zz&month=$month' style='color:#fff'>$zz</a></td>\n";				
 				$result_found = 1;
-			}
+			
 		}	
 		}
 		else{
@@ -228,20 +229,6 @@ for ($zz = 1; $zz <= $numdays; $zz++) {
 		}
 		
 	}
-  
-  
- /* if ($result_found != 1) {
-  //Buscar actividad  y marcarla.
-    $sql_currentday = "$year-$month-$zz";
-    $eventQuery = "SELECT title FROM cal WHERE eventdate = '$sql_currentday';";
-    $eventExec = mysql_query($eventQuery);
-    while($row = mysql_fetch_array($eventExec)) {
-      if (strlen($row["title"]) > 0) {
-        echo "<td style='background-color:#f89406;cursor:pointer;' onClick='window.location='" .$_SERVER['PHP_SELF']. "?year=$year&today=$zz&month=$month';'><a href='".$_SERVER['PHP_SELF']."?year=$year&today=$zz&month=$month' style='color:#fff'>$zz</a></td>\n";
-        $result_found = 1;
-      }
-    }
-  }*/
 
   if ($result_found != 1) {
     echo "<td style='cursor:pointer;' onClick='window.location='" .$_SERVER['PHP_SELF']. "?year=$year&today=$zz&month=$month';'><a href='".$_SERVER['PHP_SELF']."?year=$year&today=$zz&month=$month'>$zz</a></td>\n";
