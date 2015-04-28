@@ -12,3 +12,5 @@
 .settings/.jsdtscope
 
 *.name
+
+conf_principal.php
