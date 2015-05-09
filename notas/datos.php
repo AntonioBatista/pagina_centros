@@ -17,16 +17,16 @@ $alumno = $_SESSION['alumno'];
 	$nivel = substr($_SESSION['curso'],0,8);
 	
 	$mes = date('m');	
-	if (($_SESSION['esdeprimaria']=="1" or $_SESSION['esdesecundaria']=="1") and ($mes=='6')) {
-	include "../cabecera.php"; 
-
-	$claveal = $_SESSION['clave_al'];
-	//echo $claveal."<br>";
 	
+	// Matriculación de alumnos de Primaria y Secundaria
+	
+	if (($_SESSION['esdeprimaria']=="1" or $_SESSION['esdesecundaria']=="1") and ($mes=='6')) 
+	{
+	include "../cabecera.php"; 
+	$claveal = $_SESSION['clave_al'];	
 	echo "<div class='container'><div class='row'><div class='span10 
 offset1'><br /><h3 align='center'>".$_SESSION['todosdatos']."<br /></h3><legend 
-align='center' class='muted'>Colegio ".$_SESSION['colegio']."</legend>";
-	
+align='center' class='muted'>Colegio ".$_SESSION['colegio']."</legend>";	
 	include("matriculas.php");
 	exit();
 	}

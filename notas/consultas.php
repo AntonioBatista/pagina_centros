@@ -45,6 +45,14 @@ if (mysql_num_rows($eventQuery)>0) {
 	<?
 }
     ?>
+    <? if (stristr($_SESSION['curso'],"Bach")==TRUE) { $mtr = 'matriculas_bach.php?clave_al='.$_SESSION['claveal']; } elseif (stristr($_SESSION['curso'],"E.S.O.")==TRUE) { $mtr = 'matriculas.php?clave_al='.$_SESSION['claveal']; } else{ $mtr=''; }
+    if (!empty($mtr)) {
+    ?>
+    <li><a  href="http://<? echo $dominio;?>matriculas/<? echo $mtr;?>" target="_blank"><i class='icon icon-book'> </i> Matrícula del Alumno</a></li>
+    <?	
+    }   
+    ?>
+    
 </ul>
 <hr />
 <li class="nav-header" style="margin-bottom:5px;"> Información privada<i class="icon icon-lock icon-large pull-right"> </i></li>

@@ -32,117 +32,134 @@ $primaria = '
 <li>El plazo de matriculaci&oacute;n termina el viernes 11 de julio, y a partir de ese d&iacute;a no se podr&aacute; modificar ya ning&uacute;n dato.</li>
 </ul>
 ';
-     // Comprobamos si la matr&iacute;cula se ha realizado
+// Comprobamos si la matr&iacute;cula se ha realizado
 if ($nivel == '1º de Ba' or $nivel == '4º de E.') {
-$matriculado_bach = mysql_query("select * from matriculas_bach where claveal = '$claveal'");
-if ($nivel == "4º de E.") {
-	$curso_matricula = "1 BACH";
-}
-elseif($nivel == "1º de Ba") {
-	$curso_matricula = "2 BACH";
-}
-?>
-   <? 
- if(mysql_num_rows($matriculado_bach)=='0'){ 
- ?>
-  <div class="well well-large">
-   <p class="lead" align="center">MATRICULACI&Oacute;N EN <?php echo $curso_matricula;?></p>
-<?
-echo $introduccion;
-?>
-  <br />
-  <form name="matriculacion" action="../matriculas/matriculas_bach.php" method="post" enctype="multipart/form-data">  <input type='hidden' name = 'claveal' value = '<?  echo $claveal;?>' />
-  <input type='hidden' name = 'curso' value = '<?php echo $curso_matricula;?>' />
-  <center><input name = "pagina_principal" type="submit" value = "Proceder a la Matriculaci&oacute;n" class="btn btn-primary btn-large" />&nbsp;&nbsp;&nbsp;<a href="salir.php" class="btn btn-info btn-large">Salir</a></center>
-  </form>
+	$matriculado_bach = mysql_query("select * from matriculas_bach where claveal = '$claveal'");
+	if ($nivel == "4º de E.") {
+		$curso_matricula = "1 BACH";
+	}
+	elseif($nivel == "1º de Ba") {
+		$curso_matricula = "2 BACH";
+	}
+	?>
+	<?
+	if(mysql_num_rows($matriculado_bach)=='0'){
+		?>
+<div class="well well-large">
+<p class="lead" align="center">MATRICULACI&Oacute;N EN <?php echo $curso_matricula;?></p>
+		<?
+		echo $introduccion;
+		?> <br />
+<form name="matriculacion" action="../matriculas/matriculas_bach.php"
+	method="post" enctype="multipart/form-data"><input type='hidden'
+	name='claveal' value='<?  echo $claveal;?>' /> <input type='hidden'
+	name='curso' value='<?php echo $curso_matricula;?>' />
+<center><input name="pagina_principal" type="submit"
+	value="Proceder a la Matriculaci&oacute;n"
+	class="btn btn-primary btn-large" />&nbsp;&nbsp;&nbsp;<a
+	href="salir.php" class="btn btn-info btn-large">Salir</a></center>
+</form>
 </div>
-<?
- }
-else{
-	   if ($nuestro=="") {
-?>
-			 <br />
-<div class="alert alert-warning" style="width:500px;margin:auto;">El alumno ya se ha matriculado en nuestro Centro. Si quieres cambiar los datos de la matr&iacute;cula, puedes hacerlo abriendo de nuevo el formulario de matriculaci&oacute;n pinchando en el bot&oacute;n 'Actualizar los datos'. Los datos pueden ser modificados hasta la fecha en que la matriculaci&oacute;n de alumnos queda cerrada. Si surgen problemas, ponte en contacto con la Administracci&oacute;n del Centro.<br /><br />
-  <form name="act_matriculacion" action="../matriculas/matriculas_bach.php" method="post" enctype="multipart/form-data">
-  <input type='hidden' name = 'claveal' value = '<?  echo $claveal;?>' />
-  <input type='hidden' name = 'curso' value = '<?php echo $curso_matricula;?>' />
-  <center><input name = "actualiz" type="submit" value = "Actualizar los datos" class="btn btn-primary btn-large"  />&nbsp;&nbsp;&nbsp;<a href="salir.php" class="btn btn-info btn-large">Salir</a></center>
-  </form>
-  </div>
-<?
-	   }
-}
-?>
+		<?
+	}
+	else{
+		if ($nuestro=="") {
+			if (date('m')=='06' and (date('d')>'01' and date('d')<'19')) {
+				?>
 <br />
-<?
+<div class="alert alert-warning" style="width: 500px; margin: auto;">El
+alumno ya se ha matriculado en nuestro Centro. Si quieres cambiar los
+datos de la matr&iacute;cula, puedes hacerlo abriendo de nuevo el
+formulario de matriculaci&oacute;n pinchando en el bot&oacute;n
+'Actualizar los datos'. Los datos pueden ser modificados hasta la fecha
+en que la matriculaci&oacute;n de alumnos queda cerrada. Si surgen
+problemas, ponte en contacto con la Administracci&oacute;n del Centro.<br />
+<br />
+<form name="act_matriculacion"
+	action="../matriculas/matriculas_bach.php" method="post"
+	enctype="multipart/form-data"><input type='hidden' name='claveal'
+	value='<?  echo $claveal;?>' /> <input type='hidden' name='curso'
+	value='<?php echo $curso_matricula;?>' />
+<center><input name="actualiz" type="submit"
+	value="Actualizar los datos" class="btn btn-primary btn-large" />&nbsp;&nbsp;&nbsp;<a
+	href="salir.php" class="btn btn-info btn-large">Salir</a></center>
+</form>
+</div>
+				<?
+			}
+		}
+	}
+	?>
+<br />
+	<?
 }
 // Comprobamos si la matr&iacute;cula se ha realizado
 
 elseif (($nivel == '1º de E.' or $nivel == '2º de E.' or $nivel == '3º de E.' or $_SESSION['esdeprimaria']=="1")) {
-$matriculado_sec = mysql_query("select * from matriculas where claveal = '$claveal'");
+	$matriculado_sec = mysql_query("select * from matriculas where claveal = '$claveal'");
 
-if ($_SESSION['esdeprimaria']=="1") {
-$curso_matricula = "1 ESO";	
-}
-else{
-$curso_matricula = substr($nivel, 0, 1) + 1 . " ESO";
-}
-?>
-   <?
- if(mysql_num_rows($matriculado_sec)=='0'){ 
- 	?>
-   <div class="well well-large" >
-  <br />
-   <p class="lead" align="center">MATRICULACI&Oacute;N EN <?php echo $curso_matricula;?></p>
+	if ($_SESSION['esdeprimaria']=="1") {
+		$curso_matricula = "1 ESO";
+	}
+	else{
+		$curso_matricula = substr($nivel, 0, 1) + 1 . " ESO";
+	}
+	?>
+	<?
+	if(mysql_num_rows($matriculado_sec)=='0'){
+		?>
+<div class="well well-large"><br />
+<p class="lead" align="center">MATRICULACI&Oacute;N EN <?php echo $curso_matricula;?></p>
 
- <?
- if ($_SESSION['esdeprimaria']=="1") {
- echo $primaria;	
- }
-else{
-	echo $introduccion;
-}
-?>
-  <form name="matriculacion" action="../matriculas/matriculas.php" method="post" enctype="multipart/form-data">    
+		<?
+		if ($_SESSION['esdeprimaria']=="1") {
+			echo $primaria;
+		}
+		else{
+			echo $introduccion;
+		}
+		?>
+<form name="matriculacion" action="../matriculas/matriculas.php"
+	method="post" enctype="multipart/form-data">
 <hr />
-  <input type='hidden' name = 'claveal' value = '<?  echo $claveal;?>' />
-  <input type='hidden' name = 'curso' value = '<?php echo $curso_matricula;?>' />
-  <center><input name = "pagina_principal" type="submit" value = "Proceder a la Matriculaci&oacute;n" class="btn btn-primary btn-large" />&nbsp;&nbsp;&nbsp;<a href="salir.php" class="btn btn-info btn-large">Salir</a></center>
-  </form>
+<input type='hidden' name='claveal' value='<?  echo $claveal;?>' /> <input
+	type='hidden' name='curso' value='<?php echo $curso_matricula;?>' />
+<center><input name="pagina_principal" type="submit"
+	value="Proceder a la Matriculaci&oacute;n"
+	class="btn btn-primary btn-large" />&nbsp;&nbsp;&nbsp;<a
+	href="salir.php" class="btn btn-info btn-large">Salir</a></center>
+</form>
 </div>
-<?
- if ($_SESSION['esdeprimaria']=="1") {
- ?>
-<!-- <div class="well well-large" >
-  <br />
-   <p class="lead" align="center">Informe de Tr&aacute;nsito en Primaria</p>
-     <form name="transito" action="transito.php" method="post" enctype="multipart/form-data">    
-<hr />
-  <input type='hidden' name = 'claveal' value = '<?  //echo $claveal;?>' />
-  <center><input name = "inf_transito" type="submit" value = "Escribir Informe" class="btn btn-primary btn-large" />&nbsp;&nbsp;&nbsp;<a href="salir.php" class="btn btn-info btn-large">Salir</a></center>
-  </form>
-  </div>
-  <br />-->
- <?	
- }
- }
-else{
-   if ($nuestro=="") {
-?>
-			<br />
-<div class="alert alert-warning" style="width:500px;margin:auto;">El alumno ya se ha matriculado en nuestro Centro. Si quieres cambiar los datos de la matr&iacute;cula, puedes hacerlo abriendo de nuevo el formulario de matriculaci&oacute;n pinchando en el bot&oacute;n 'Actualizar los datos'. Si surgen problemas, ponte en contacto con la Administracci&oacute;n del Centro.<br /><br />
-  <form name="act_matriculacion" action="../matriculas/matriculas.php" method="post" enctype="multipart/form-data">
-  <input type='hidden' name = 'claveal' value = '<?  echo $claveal;?>' />
-  <input type='hidden' name = 'curso' value = '<?php echo $curso_matricula;?>' />
-  <center><input name = "actualiz" type="submit" value = "Actualizar los datos" class="btn btn-primary btn-large"  />&nbsp;&nbsp;&nbsp;<a href="salir.php" class="btn btn-info btn-large">Salir</a></center>
-  </form>
-</div>
-<?
-		   }
-}
-?>
+		<?
+	}
+	else{
+		if ($nuestro=="") {
+			if (date('m')=='06' and (date('d')>'01' and date('d')<'19')) {
+				?>
 <br />
-<?
+<div class="alert alert-warning" style="width: 500px; margin: auto;">El
+alumno ya se ha matriculado en nuestro Centro. Si quieres cambiar los
+datos de la matr&iacute;cula, puedes hacerlo abriendo de nuevo el
+formulario de matriculaci&oacute;n pinchando en el bot&oacute;n
+'Actualizar los datos'. Si surgen problemas, ponte en contacto con la
+Administracci&oacute;n del Centro.<br />
+<br />
+<form name="act_matriculacion" action="../matriculas/matriculas.php"
+	method="post" enctype="multipart/form-data"><input type='hidden'
+	name='claveal' value='<?  echo $claveal;?>' /> <input type='hidden'
+	name='curso' value='<?php echo $curso_matricula;?>' />
+<center><input name="actualiz" type="submit"
+	value="Actualizar los datos" class="btn btn-primary btn-large" />&nbsp;&nbsp;&nbsp;<a
+	href="salir.php" class="btn btn-info btn-large">Salir</a></center>
+</form>
+</div>
+				<?
+			}
+		}
+	}
+	?>
+<br />
+	<?
 }
 ?>
 <br />
