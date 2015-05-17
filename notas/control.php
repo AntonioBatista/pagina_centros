@@ -69,7 +69,7 @@ include "../cabecera.php";
 }	
 
 	$mes = date('m');
-if ($es_primaria > 0 and $mes=='6') {
+if ($es_primaria > 0 and $mes=='06') {
 	include("../funciones.php");	
 	$_SESSION['aut']="1";
 	$datos = mysql_fetch_array($alum_primaria);	
@@ -90,7 +90,7 @@ if ($es_primaria > 0 and $mes=='6') {
 	header('location:datos.php');
 	exit();	
 	}
-	elseif ($es_secundaria > 0 and $mes=='6') {
+	elseif ($es_secundaria > 0 and $mes=='06') {
 	include("../funciones.php");	
 	$_SESSION['aut']="1";
 	$datos = mysql_fetch_array($alum_secundaria);	

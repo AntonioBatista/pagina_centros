@@ -784,18 +784,20 @@ if ($claveal or $id) {
 		<td valign=top>
 		<table style="width: 100%; border: none;">
 			<tr>
-				<td valign=top style="border: none"><input type="radio"
+				<td valign=top style="border: none">
+				<input type="radio" name="religion" value="Religión Catolica"
+					style="margin: 2px 2px"
+		<? if($religion == 'Religión Catolica'){echo "checked";} ?> />
+				Religi&oacute;n Cat&oacute;lica<br />
+				<input type="radio"
 					name="religion" value="Religión Islámica" style="margin: 2px 2px"
 		<? if($religion == 'Religión Islámica'){echo "checked";} ?> />
 				Religi&oacute;n Isl&aacute;mica<br />
 				<input type="radio" name="religion" value="Religión Judía"
 					style="margin: 2px 2px"
 		<? if($religion == 'Religión Judía'){echo "checked";} ?> />
-				Religi&oacute;n Jud&iacute;a<br />
-				<input type="radio" name="religion" value="Religión Catolica"
-					style="margin: 2px 2px"
-		<? if($religion == 'Religión Catolica'){echo "checked";} ?> />
-				Religi&oacute;n Cat&oacute;lica</td>
+				Religi&oacute;n Jud&iacute;a
+				</td>
 				<td valign=top style="border: none"><input type="radio"
 					name="religion" value="Religión Evangélica" style="margin: 2px 2px"
 		<? if($religion == 'Religión Evangélica'){echo "checked";} ?> />
