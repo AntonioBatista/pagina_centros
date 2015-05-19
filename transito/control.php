@@ -70,7 +70,7 @@ $num_cole=mysql_num_rows($c_prim);
 if ($num_cole>0 or $auth=="1") {
 	if (isset($cole)){$colegio=$cole;}else{$colegio=$colegi;}
 	?>
-<div align="center">
+<div class="hidden-print" align="center">
 <form class="form-inline" method="post"><input type="hidden" name="auth"
 	value="1" /> <input type="hidden" name="colegi"
 	value="<? echo $colegio;?>" /> <label for="unidad">
@@ -95,7 +95,8 @@ if ($num_cole>0 or $auth=="1") {
 	while ($alumn=mysql_fetch_array($alum)) {
 		echo "<option value='$alumn[0]:$alumn[1], $alumn[2]'>$alumn[1], $alumn[2]</option>";
 	}
-	?> </select></form>
+	?> </select>
+	</form>
 </div>
 
 	<?
@@ -167,6 +168,7 @@ if (isset($claveal)) {
 	include 'form.php';
 }
 ?></div>
+
 <? include("../pie.php"); ?>
 
 

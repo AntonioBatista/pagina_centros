@@ -22,7 +22,7 @@ elseif (strstr($_SERVER['REQUEST_URI'],'notas')==TRUE){ $activo2 = ' class="acti
 elseif (strstr($_SERVER['REQUEST_URI'],'doc')==TRUE){ $activo3 = ' class="active" ';}
 include("conf_principal.php");
 ?>
-<div class="navbar">
+<div class="navbar hidden-print">
   <div class="navbar-inner" style="padding-left:0px">
       <img src="http://<? echo $dominio;?>logo.gif" class="img-polaroid img-rounded pull-left"  width="60" style="margin-right:30px;margin-left:0px;padding:3px;background-color:#fafafa"/>
 		    <div class="container-fluid">

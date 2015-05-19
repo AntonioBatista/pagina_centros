@@ -5,7 +5,6 @@ if (mysql_num_rows($ya_hay)>0) {
 	$proc=1;
 	while ($ya=mysql_fetch_array($ya_hay)) {
 		${$ya[2]}=$ya[3];
-		//echo "${$ya[2]} => $ya[3]<br>";
 	}
 }
 ?>
@@ -59,6 +58,11 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
 <input type="hidden" name="colegi" value="<? echo $colegio;?>" />
 <input type="hidden" name="unidad" value="<? echo $unidad;?>" />
 <input type="hidden" name="alumno" value="<? echo $alumno;?>" />
+<legend class="muted">TUTOR</legend>
+<label>
+  <input type="text" class="input input-xlarge" name="tutor" value="<? echo $tutor;?>" placeholder="Nombre y Apellidos del Tutor del Grupo" required>
+</label>
+<hr>
 
 <legend class="muted">ÁMBITO ACADÉMICO</legend>
 
@@ -298,7 +302,7 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
 <h5 class="text-info">Adaptaciones Curriculares</h5>
 <h6 class="text-success">Ha tenido Adaptación Curricular:</h6>
 <label>Areas cursadas en la Adaptación Curricular Significativa
-  <input type="text" class="input input-xlarge" name="areasadcurrsign" value="<? echo $areasadcurrsign;?>" caption="Tarari">
+  <input type="text" class="input input-xlarge" name="areasadcurrsign" value="<? echo $areasadcurrsign;?>">
 </label>
 <br>
 <label>Areas cursadas en la Adaptación Curricular No Significativa
@@ -429,7 +433,7 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
 <p class="help-block">Otros aspectos a reseñar (agrupamientos, datos médicos, autonomía, etc).</p>
 <textarea name="observaciones" rows="10" class="input input-xxlarge"><? echo $observaciones;?></textarea>
 <hr>
-<input type="submit" class="btn btn-large btn-info" name="submit0" value="<? if ($proc==1) {echo "Actualizar datos";}else{echo "Enviar datos";}?>">
+<input type="submit" class="btn btn-large btn-info hidden-print" name="submit0" value="<? if ($proc==1) {echo "Actualizar datos";}else{echo "Enviar datos";}?>">
 </form>
 <? 
 }
