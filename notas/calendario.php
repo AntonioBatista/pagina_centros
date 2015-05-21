@@ -25,24 +25,21 @@ exit;
 
 ?>
 <div class="row-fluid">
-<div class="span8">
+<div class="span1"></div>
+<div class="span10">
 
 <?
-$eventQuery = mysql_query("SELECT id, fechaini, unidades, nombre FROM calendario WHERE unidades like '%".$_SESSION['unidad']."%' and date(fechaini)>'$inicio_curso' and categoria > '2' order by fechaini");
-echo "<table class='table table-bordered table-striped' align='center'><tr class='text-info'><th>FECHA</th><th>GRUPO</th><th>ACTIVIDAD</th></tr><tbody>";
+$eventQuery = mysql_query("SELECT id, fechaini, unidades, nombre, asignaturas FROM calendario WHERE unidades like '%".$_SESSION['unidad']."%' and date(fechaini)>'$inicio_curso' and categoria > '2' order by fechaini");
+echo "<table class='table table-bordered table-striped' align='center'><tr class='text-info'><th>FECHA</th><th>GRUPO</th><th>ACTIVIDAD</th><th>ASIGNATURA </th></tr><tbody>";
 while ($reg=mysql_fetch_array($eventQuery)) {
 	echo "<tr>
 	<td nowrap>$reg[1]</td>
 	<td>$reg[2]</td>
-	<td>$reg[3]</td>
+	<td nowrap>$reg[3]</td>
+	<td>$reg[4]</td>
 	</tr>";
 }
 echo "</tbody></table>";
-?>
-</div>
-<div class="span4">
-<?
-include("calendario_grupos.php");
 ?>
 </div>
 </div>
