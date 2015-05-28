@@ -299,7 +299,7 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
 </label>
 <hr>
 
-<h5 class="text-info">Adaptaciones Curriculares</h5>
+<h5 class="text-info">Medidas de Atención a la Diversidad</h5>
 <h6 class="text-success">Ha tenido Adaptación Curricular:</h6>
 <label>Areas cursadas en la Adaptación Curricular Significativa
   <input type="text" class="input input-xlarge" name="areasadcurrsign" value="<? echo $areasadcurrsign;?>">
