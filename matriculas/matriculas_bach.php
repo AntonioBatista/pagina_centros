@@ -62,10 +62,24 @@ array(
 
 
 // Asignaturas y Modalidades
-$it11 = array("Bachillerato de Ciencias y Tecnología", "Vía de Ciencias e Ingeniería", "Vía de Ciencias de la Naturaleza y la Salud", "Ciencias y Tecnología");
-$it12 = array("Bachillerato de Humanidades y Ciencias Sociales", "Vía de Humanidades", "Vía de Ciencias Sociales", "Humanidades y Ciencias Sociales");
-$opt11=array("DBT11" => "Dibujo Técnico", "TIN11" => "Tecnología", "BYG11"=>"Biología y Geología");
-$opt12=array("GRI12-LAT12" => "Griego, Latín", "GRI12-ECO12" => "Griego, Economía", "MCS12-ECO12"=>"Matemáticas de Ciencias Sociales, Economía", "MCS12-LAT12"=>"Matemáticas de Ciencias Sociales, Latín");
+$it1 = array("1"=>"Ciencias e Ingeniería y Arquitectura", "2"=>"Ciencias y Ciencias de la Salud", "3"=>"Humanidades", "4"=>"Ciencias Sociales y Jurídicas");
+$opt11=array( "MAT1"=>"Matemáticas",  "FYQ1"=>"Física y Química", "DBT1" => "Dibujo Técnico", "TIN1" => "Tecnología");
+$opt12=array("MAT1"=>"Matemáticas",  "FYQ1"=>"Física y Química", "BYG11"=>"Biología y Geología", "AAP1"=>"Anatomía Aplicada");
+$opt13=array(
+""=>"",
+"LAT1-GRI1-PAC1" => "Latín, Griego, Patrimonio Artístico y Cultural", 
+"LAT1-GRI1-CEE1" => "Latín, Griego, Cultura Emprendedora y Empresarial",
+"LAT1-LUN1-PAC1" => "Latín, Literatura Universal, Patrimonio Artístico y Cultural",
+"LAT1-LUN1-CEE1" => "Latín, Literatura Universal, Cultura Emprendedora y Empresarial",
+"LAT1-ECO1-PAC1" => "Latín, Economía, Patrimonio Artístico y Cultural",
+"LAT1-ECO1-CEE1" => "Latín, Economía, Cultura Emprendedora y Empresarial",
+"MCS1-GRI1-PAC1" => "Matemáticas Aplicadas a Ciencias Sociales, Griego, Patrimonio Artístico y Cultural", 
+"MCS1-GRI1-CEE1" => "Matemáticas Aplicadas a Ciencias Sociales, Griego, Cultura Emprendedora y Empresarial",
+"MCS1-LUN1-PAC1" => "Matemáticas Aplicadas a Ciencias Sociales, Literatura Universal, Patrimonio Artístico y Cultural",
+"MCS1-LUN1-CEE1" => "Matemáticas Aplicadas a Ciencias Sociales, Literatura Universal, Cultura Emprendedora y Empresarial",
+"MCS1-ECO1-PAC1" => "Matemáticas Aplicadas a Ciencias Sociales, Economía, Patrimonio Artístico y Cultural",
+"MCS1-ECO1-CEE1" => "Matemáticas Aplicadas a Ciencias Sociales+, Economía, Cultura Emprendedora y Empresarial",
+);
 
 $it21 = array("Bachillerato de Ciencias y Tecnología", "Vía de Ciencias e Ingeniería", "Vía de Ciencias de la Naturaleza y la Salud", "Ciencias y Tecnología");
 $it22 = array("Bachillerato de Humanidades y Ciencias Sociales", "Vía de Humanidades", "Vía de Ciencias Sociales", "Humanidades y Ciencias Sociales");
@@ -90,21 +104,13 @@ if($_POST['enviar'] =="Enviar los datos de la Matrícula"){
 	$itinerario2=substr($mod2,-1);
 	foreach($_POST as $key => $val)
 	{
-		if ($key=="mod1") {
-			foreach (${opt1.$itinerario1} as $opt => $n_opt){
-				foreach ($_POST as $clave=>$valor){
-					if ($valor==$opt) {
-						$n_o+=1;
-						${optativa.$n_o}=$valor;
-						if(${optativa.$n_o} == ""){
-							$vacios.= "optativa".$n_o.", ";
+		if ($key=="mod1" and $val>2) {
+
+						if($optativa1 == ""){
+							$vacios.= "optativas de modalidad, ";
 							$num+=1;
 						}
-						$tr_o = explode(", ",$n_opt);
-						$optativa1=$valor;
-					}
-				}
-			}
+
 		}
 		if ($key=="mod2"){
 			foreach (${opt2.$itinerario2} as $opt => $n_opt){
@@ -383,7 +389,22 @@ en ponerse en contacto con la Adminsitración o Dirección del Centro. <br />
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="http://<? echo $dominio;?>font-awesome/css/font-awesome.min.css">
+<script language="Javascript">
+function show()
+{
 
+    document.getElementById("form-it1").style.visibility="visible";
+    document.getElementById("form-it1").disabled=false;
+
+}
+function hide()
+{
+
+    document.getElementById("form-it1").style.visibility="hidden";
+    document.getElementById("form-it1").disabled=true;
+
+}
+</script>
 <script type="text/javascript">
 function confirmacion() {
 	if (confirm("ATENCIÓN:\n Los datos que estás a punto de enviar no pueden ser modificados más tarde a través de esta página. \nSi estás seguro que los datos son correctos y las opciones elegidas son las adecuadas, pulsa el botón ACEPTAR. De lo contrario, el boton CANCELAR te devuelve al formulario de matriculación, donde podrás realizar los cambios que consideres oportunos."))
@@ -784,7 +805,7 @@ if ($claveal or $id) {
 		<td valign=top>
 		<table style="width: 100%; border: none;">
 			<tr>
-				<td valign=top style="border: none">
+				<td valign=top style="border: none;width:50%">
 				<input type="radio" name="religion" value="Religión Catolica"
 					style="margin: 2px 2px"
 		<? if($religion == 'Religión Catolica'){echo "checked";} ?> />
@@ -806,48 +827,64 @@ if ($claveal or $id) {
 				<input type="radio" name="religion" value="Valores Ciudadanos"
 					style="margin: 2px 2px"
 		<? if($religion == 'Valores Ciudadanos'){echo "checked";} ?> />
-				Valores Ciudadanos</td>
+				<?php if($n_curso == 1){?>Educación para la Ciudadanía y los Derechos Humanos<? } else { ?>Atención Educativa<? } ?> </td>
 			</tr>
 		</table>
 		</td>
 	</tr>
 	<tr>
 		<td style="background-color: #CCCCCC; text-align: center;" colspan="3"><strong>MODALIDAD
-		Y ASIGNATURAS OPTATIVAS DE <? echo $n_curso; ?>º DE BACHILLERATO </strong><br />
+		Y ASIGNATURAS OPTATIVAS DE <? echo $n_curso; ?>º DE BACHILLERATO </strong><p class="muted">Si eliges la Modalidad de Humanidades o Ciencias Sociales y Jurídicas <b>debes seleccionar un bloque de Asignaturas Optativas</b> en el campo desplegable que aparecerá al marcar la casilla. Si eliges una Modalidad de Ciencias las Asignaturas no son opcionales.
+		</p>
 		</td>
 	</tr>
 
+	
+	<?php if($curso == "1BACH"): ?>
+		<tr>
+		<td colspan='3'>
+		<table class="table table-bordered" style="width:100%">
+		<tr>
+		<?php foreach ($it1 as $n_it1=>$itiner1){ ?>
+			<td style="width:25%">
+			
+			
+			<label class="radio"> <input required type="radio" name="mod1" value="<?php echo $n_it1; ?>" <?php echo ($itinerario1 == $n_it1) ? 'checked' : ''; ?> <?php if($n_it1>2){echo 'onClick="show()"';}else{echo 'onClick="hide()"';}?> /><strong><?php echo $itiner1; ?></strong></label>
+			
+			
+			</td>
+			<?php } ?>
+		</tr>
+		<tr>
+		<?php for ($i = 1; $i <= 3; $i++){ ?>
+		
+		<?php if ($i<3) {?>
+		<td style="width:25%">
+		<?php foreach (${opt1.$i} as $optit_1 => $nombre){ ?>
+			<p><?php echo $nombre; ?></p>
+		<?php }?>
+		</td>		
+		<?php } else {?>
+		<td colspan="2" style="width:50%">
+		<? if ($itinerario1>2) { $extra_opt1 = ' required';} else{$extra_opt1 = 'style="visibility:hidden" disabled';}?>
+		<br>	
+		<select class="input input-xxlarge" id="form-it1" name="optativa1" <? echo $extra_opt1;?>>
+		<?php foreach (${opt1.$i} as $optit_1 => $nombre){ ?> ?>		
+
+				<option value="<?php echo $optit_1; ?>"
+				<?php echo (isset($optativa1) && $optativa1 == $optit_1) ? 'selected' : ''; ?>><? echo $nombre; ?></option>
+				<?php }?>
+				</select>
+		</td>
+		
+		<?php }?>
+		<?php }?>
+		</tr>
+		</table>
+		</td>
+		</tr>
+		<?php endif;?>
 	<?
-	if($curso=="1BACH")
-	{
-		echo " <tr><td colspan='3'>";
-		echo "<table class='table table-bordered table-striped' style='width:100%'><tr>";
-		for ($i = 1; $i < 3; $i++) {
-			echo "<td align='center' width='25%' valign='bottom'><strong style='font-size:14px'>";
-
-			echo "".${it1.$i}[0]."</strong></td>";
-		}
-		echo "</tr><tr>";
-		for ($i = 1; $i < 3; $i++) {
-			echo "<td align='left' class='it' valign='top'>";
-
-			$num1="";
-			$num_it=count(${opt1.$i});
-			foreach (${opt1.$i} as $optit_1 => $nombre){
-				$num1+=1;
-				if (${optativa.$num1}=="0") {${optativa.$num1}="";}
-				echo '<input type="radio" value="'.$optit_1.'" name="mod1" ';
-				if ($optativa1 == $optit_1) {
-					echo ' checked';
-				}
-				echo '  style="margin: 2px 2px" >';
-				echo '<span style="margin:2px 2px" >'.$nombre.'</span><br />';
-			}
-			echo "</td>";
-		}
-		echo "</tr></table></td></tr>";
-	}
-
 	if($curso == "2BACH")
 	{
 		if (empty($curso_largo)) {
@@ -942,6 +979,8 @@ if ($claveal or $id) {
 			<?
 
 			if ($repetidor <> 1) {
+
+
 				?>
 <tr id='no_repite1'>
 	<td style="background-color: #CCCCCC;" colspan="3" align="center"><strong>ASIGNATURAS
@@ -950,77 +989,56 @@ if ($claveal or $id) {
 	diferente a la que ya has cursado debes pasar por Jefatura de
 	Estudios.)</span></td>
 </tr>
-				<?
-				echo " <tr><td colspan='3'>";
-				echo "<table class='table table-bordered table-striped' style='width:100%'><tr>";
-				for ($i = 1; $i < 3; $i++) {
-					echo "<td align='center' width='25%' valign='bottom'><strong>";
 
-					echo "".${it1.$i}[0]."</strong></td>";
-				}
-				echo "</tr><tr>";
-				for ($i = 1; $i < 3; $i++) {
-					echo "<td align='left' class='it' valign='top'>";
-					$num1=$i;
-					$num_it=count(${opt1.$i});
-					foreach (${opt1.$i} as $optit_1 => $nombre){
-						$pos="";
-						$num1+=1;
-						if (${optativa.$num1}=="0") {${optativa.$num1}="";}
-						echo '<input type="radio" value="'.$optit_1.'" name="mod1" ';
-						if ($optativa1 == $optit_1) {
-							echo ' checked';
-						}
-						else{
-							if(strstr($curso_largo,${it1.$i}[3])==FALSE){
-								echo " disabled";
-							}
-							$combas = explode(":", $combasi);
-							foreach ($combas as $com){
-								$q1 = "select abrev from asignaturas where codigo = '$com' and abrev not like '%\_%'";
-								$q2.=$q1."<br>";
-								$abrv = mysql_query($q1);
-								$abrev = mysql_fetch_array($abrv);
-								$q7.="$optit_1 ==> $abrev[0] --> $com<br>";
-								if (strstr($optit_1,$abrev[0])==TRUE) {
-									$pos+=1;
-								}
-							}
-							if ($matriculas > "1"){
-								$bd_ant = $db.substr($curso_actual,0,4);
-								$q5="select combasi from ". $bd_ant  .".alma where claveal = '$claveal' ";
-								$q6.=$q5."<br>";
-								$ant = mysql_query($q5);
-								$ant_comb = mysql_fetch_array($ant);
-								$combasi_ant = $ant_comb[0];
-								$combas_anti = explode(":", $combasi_ant);
-								foreach ($combas_anti as $com_ant){
-									$q3 = "select abrev from ".$bd_ant.".asignaturas where codigo = '$com_ant'";
-									$q4.=$q3."<br>";
-									$abrv_ant = mysql_query($q3);
-									$abrev_ant = mysql_fetch_array($abrv_ant);
-									$asig_ant = $abrev_ant[0];
-									if (strstr($optit_1,$abrev_ant[0])==TRUE) {
-										$pos+=1;
-									}
-								}
-							}
-							if ($pos>$i-1) {
-								echo " checked";
-							}
+<tr>
+		<td colspan='3'>
+		<table class="table table-bordered" style="width:100%">
+		<tr>
+		<?php foreach ($it1 as $n_it1=>$itiner1){ ?>
+			<td style="width:25%">
+			
+			
+			<label class="radio"> <input required type="radio" name="mod1" value="<?php echo $n_it1; ?>" <?php echo ($itinerario1 == $n_it1) ? 'checked' : ''; ?> <?php if($n_it1>2){echo 'onClick="show()"';}else{echo 'onClick="hide()"';}?> 
+			<? 
+			if(stristr($curso_largo,"(Ciencias")==TRUE and $n_it1>2){echo ' disabled';}
+			if(stristr($curso_largo,"Humanidades")==TRUE and $n_it1<3){echo ' disabled';}
+			?> /><strong><?php echo $itiner1; ?></strong></label>
+			
+			
+			</td>
+			<?php } ?>
+		</tr>
+		<tr>
+		<?php for ($i = 1; $i <= 3; $i++){ ?>
+		
+		<?php if ($i<3) {?>
+		<td style="width:25%">
+		<?php foreach (${opt1.$i} as $optit_1 => $nombre){ ?>
+			<p><?php echo $nombre; ?></p>
+		<?php }?>
+		</td>		
+		<?php } else {?>
+		<td colspan="2" style="width:50%">
+		<? if ($itinerario1>2) { $extra_opt1 = ' required';} else{$extra_opt1 = 'style="visibility:hidden" disabled';}?>
+		<br>	
+		<select class="input input-xxlarge" id="form-it1" name="optativa1" <? echo $extra_opt1;?>>
+		<?php foreach (${opt1.$i} as $optit_1 => $nombre){ ?> ?>		
 
-							else{
-								echo " disabled";
-							}
-						}
-						echo '  style="margin: 2px 2px" >';
-						//echo "select abrev from ".$bd_ant.".asignaturas where codigo = '$com_ant'";
-						echo '<span style="margin:2px 2px" >'.$nombre.'</span><br />';
-					}
-					echo "</td>";
-				}
-				echo "</tr></table></td></tr>";
-				?>
+				<option value="<?php echo $optit_1; ?>"
+				<?php echo (isset($optativa1) && $optativa1 == $optit_1) ? 'selected' : ''; ?>><? echo $nombre; ?></option>
+				<?php }?>
+				</select>
+		</td>
+		
+		<?php }?>
+		<?php }?>
+		</tr>
+		</table>
+		</td>
+		</tr>
+
+
+
 				<?
 			}
 	}
@@ -1085,7 +1103,7 @@ if ($claveal or $id) {
 <tr>
 	<td valign=top colspan="3"><strong>OBSERVACIONES</strong>: <br />
 	Indique aquellas cuestiones que considere sean importantes para
-	conocimiento del Centro (enfermedades,  situación familiar, etc.) <br />
+	conocimiento del Centro <br />
 	<textarea name="observaciones" id="textarea" rows="5"
 		style="width: 98%" onKeyDown="contar('form1','observaciones')"
 		onkeyup="contar('form1','observaciones')"><? echo $observaciones; ?></textarea>

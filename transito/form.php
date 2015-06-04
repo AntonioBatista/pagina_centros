@@ -116,7 +116,7 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
 <hr>
 <h5 class="text-info">Notas Finales</h5>
 <label>Lengua</label>
-<select name="leng" class="input input-mini" required>
+<select name="leng" class="input input-mini" >
 <option><? echo $leng;?></option>
   <option>1</option>
   <option>2</option>
@@ -130,7 +130,7 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
   <option>10</option>
 </select>
 <label>Matemáticas</label>
-<select name="mat" class="input input-mini" required>
+<select name="mat" class="input input-mini" >
   <option><? echo $mat;?></option>
   <option>1</option>
   <option>2</option>
@@ -144,7 +144,7 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
   <option>10</option>
 </select>
 <label>Inglés</label>
-<select name="ing" class="input input-mini" required>
+<select name="ing" class="input input-mini" >
 <option><? echo $ing;?></option>
   <option>1</option>
   <option>2</option>
@@ -158,7 +158,7 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
   <option>10</option>
 </select>
 <label>Conocimiento</label>
-<select name="con" class="input input-mini" required>
+<select name="con" class="input input-mini" >
 <option><? echo $con;?></option>
   <option>1</option>
   <option>2</option>
@@ -172,7 +172,7 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
   <option>10</option>
 </select>
 <label>Ed. Física</label>
-<select name="edfis" class="input input-mini" required>
+<select name="edfis" class="input input-mini" >
 <option><? echo $edfis;?></option>
   <option>1</option>
   <option>2</option>
@@ -186,7 +186,7 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
   <option>10</option>
 </select>
 <label>Música</label>
-<select name="mus" class="input input-mini" required>
+<select name="mus" class="input input-mini" >
 <option><? echo $mus;?></option>
   <option>1</option>
   <option>2</option>
@@ -200,7 +200,7 @@ if ($PT_AL_aula=="Aula") {$ptalaula1="checked";}elseif ($PT_AL_aula=="Fuera") {$
   <option>10</option>
 </select>
 <label>Plástica</label>
-<select name="plas" class="input input-mini" required>
+<select name="plas" class="input input-mini" >
 <option><? echo $plas;?></option>
   <option>1</option>
   <option>2</option>
