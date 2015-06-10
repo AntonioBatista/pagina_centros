@@ -272,7 +272,7 @@ if($_POST['enviar'] =="Enviar los datos de la Matrícula"){
 			if (mysql_num_rows($ya_esta) > 0) {
 				$ya = mysql_fetch_array($ya_esta);
 				if (strlen($ruta_este) > 0 or strlen($ruta_oeste) > 0) {$transporte = '1';}
-				if(!($itinerario=='3')){$matematicas4="";}
+				if($curso=='4ESO' and !($itinerario=='3')){$matematicas4="";}
 				if (empty($foto)) { $foto = "0";}
 				$insert = "update matriculas set apellidos='$apellidos', nombre='$nombre', nacido='$nacido', provincia='$provincia', nacimiento='$fecha_nacimiento', domicilio='$domicilio', localidad='$localidad', dni='$dni', padre='$padre', dnitutor='$dnitutor', madre='$madre', dnitutor2='$dnitutor2', telefono1='$telefono1', telefono2='$telefono2', religion='$religion', colegio='$colegio', optativa1='$optativa1', optativa2='$optativa2', optativa3='$optativa3', optativa4='$optativa4', otrocolegio='$otrocolegio', letra_grupo='$letra_grupo', idioma='$idioma',  religion = '$religion', act1='$act1', observaciones='$observaciones', exencion='$exencion', bilinguismo='$bilinguismo', observaciones = '$observaciones', optativa21='$optativa21', optativa22='$optativa22', optativa23='$optativa23', optativa24='$optativa24', act21='$act21', act22='$act22', act23='$act23', act24='$act24', promociona='$promociona', transporte='$transporte', ruta_este='$ruta_este', ruta_oeste='$ruta_oeste', curso='$curso', sexo = '$sexo', hermanos = '$hermanos', nacionalidad = '$nacionalidad', claveal = '$claveal', matematicas4 = '$matematicas4', itinerario = '$itinerario', optativa5='$optativa5', optativa6='$optativa6', optativa7='$optativa7', diversificacion='$diversificacion', optativa25='$optativa25', optativa26='$optativa26', optativa27='$optativa27', enfermedad = '$enfermedad', otraenfermedad = '$otraenfermedad', foto='$foto', divorcio='$divorcio' where id = '$ya[0]'";
 				mysql_query($insert);
@@ -461,7 +461,7 @@ if (($claveal or $id) and $curso) {
 	// Comprobación de padre con varios hijos en el Centro
 	$ya_matricula = mysql_query("select claveal, apellidos, nombre, id from matriculas where ". $conditio ."");
 	$ya_primaria = mysql_query("select claveal, apellidos, nombre from alma_primaria where ". $conditio1 ."");
-	$ya_alma = mysql_query("select claveal, apellidos, nombre, unidad from alma where (nivel='1E' or nivel='2E' or nivel='3E' or nivel='4E') and (". $conditio1 .")");
+	$ya_alma = mysql_query("select claveal, apellidos, nombre, unidad from alma where (curso like '1º de E%' or curso like '2º de E%' or curso like '3º de E%' or curso like '4º de E%') and (". $conditio1 .")");
 	if (mysql_num_rows($ya_matricula) == "0" and mysql_num_rows($ya_primaria) == "0" and mysql_num_rows($ya_alma) == "0") {
 		?>
 <div class="aviso3" align="justify"

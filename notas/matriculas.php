@@ -1,3 +1,21 @@
+<?
+// Copia de seguridad de las tablas antiguas de matriculas antes de comenzar el proceso en el mes de Junio
+if ($_SESSION['matricula_nueva'] == "1") {
+$curs_mtr=substr($curso_actual,0,4)+1;	
+$chk=mysql_query("select * from matriculas_$curs_mtr");
+if (mysql_num_rows($chk)>0) {}
+else{
+mysql_query("create table matriculas_$curs_mtr (select * from matriculas)");
+mysql_query("truncate table matriculas");
+mysql_query("create table matriculas_bach_$curs_mtr (select * from matriculas_bach)");
+mysql_query("truncate table matriculas_bach");
+mysql_query("create table matriculas_backup_$curs_mtr (select * from matriculas_backup)");
+mysql_query("truncate table matriculas_backup");
+mysql_query("create table matriculas_bach_backup_$curs_mtr (select * from matriculas_bach_backup)");
+mysql_query("truncate table matriculas_bach_backup");	
+}		
+}
+?>
 <br />
 <?
 $introduccion = '

@@ -74,6 +74,7 @@ if ($es_primaria > 0 and $mes=='6') {
 	$_SESSION['aut']="1";
 	$datos = mysql_fetch_array($alum_primaria);	
 	$_SESSION['esdeprimaria'] = "1";
+	$_SESSION['matricula_nueva'] = "1";
 	$_SESSION['todosdatos'] = "$datos[1] $datos[0]";
 	$_SESSION['alumno'] =  "$datos[0], $datos[1]";
 	$_SESSION['curso'] = $datos[4];
@@ -94,6 +95,7 @@ if ($es_primaria > 0 and $mes=='6') {
 	$_SESSION['aut']="1";
 	$datos = mysql_fetch_array($alum_secundaria);	
 	$_SESSION['esdesecundaria'] = "1";
+	$_SESSION['matricula_nueva'] = "1";
 	$_SESSION['todosdatos'] = "$datos[1] $datos[0]";
 	$_SESSION['alumno'] =  "$datos[0], $datos[1]";
 	$_SESSION['curso'] = $datos[4];
@@ -126,6 +128,9 @@ if ($es_primaria > 0 and $mes=='6') {
 	$alum0 = mysql_fetch_array($alu0);
 
 	$datos = mysql_fetch_row($alumno1);
+	if (date('m')=='06') {
+		$_SESSION['matricula_nueva'] = "1";
+	}
 	$_SESSION['todosdatos'] = "$datos[1] $datos[0]";
 	$_SESSION['alumno'] =  "$datos[0], $datos[1]";
 	$_SESSION['curso'] = $datos[4];
@@ -174,6 +179,9 @@ if ($es_primaria > 0 and $mes=='6') {
 	$alu1 = mysql_query("SELECT claveal, apellidos, nombre, unidad, nivel, grupo, curso, dni, correo from alma WHERE claveal = '$clave_al'");
 		// Si es alumno no registrado lo enviamos a la página de regsitro
 	$ya_al = mysql_fetch_array($alu1);
+		if (date('m')=='06') {
+		$_SESSION['matricula_nueva'] = "1";
+		}
 		$_SESSION['clave_al'] = $clave_al;
 		$_SESSION['nombre'] = $ya_al[2];
 		$_SESSION['apellidos'] = $ya_al[1];
