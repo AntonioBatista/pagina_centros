@@ -34,6 +34,23 @@ if(!$m3){
 mysqli_query($db_con,"ALTER TABLE  `matriculas` ADD  `matematicas3` CHAR( 1 ) NOT NULL");
 }
 
+// Divorcios
+$divorciados = array(
+array(
+													'id'     => 'Guarda y Custodia compartida por Madre y Padre',
+													'nombre' => 'Guarda y Custodia compartida por Madre y Padre',
+),
+array(
+													'id'     => 'Guarda y Custodia de la Madre',
+													'nombre' => 'Guarda y Custodia de la Madre',
+),
+array(
+													'id'     => 'Guarda y Custodia del Padre',
+													'nombre' => 'Guarda y Custodia del Padre',
+),
+);
+
+
 // Enfermedades
 $enfermedades = array(
 array(
@@ -370,7 +387,7 @@ Dirección del Centro. <br />
 
 <script type="text/javascript">
 function confirmacion() {
-	var answer = confirm("ATENCIÓN:\n Los datos que estás a punto de enviar no pueden ser modificados más tarde a través de esta página. \nSi estás seguro que los datos son correctos y las opciones elegidas son las adecuadas, pulsa el botón ACEPTAR. De lo contrario, el boton CANCELAR te devuelve al formulario de matriculación, donde podrás realizar los cambios que consideres oportunos.")
+	var answer = confirm("ATENCIÓN:\n Los datos que estás a punto de enviar pueden ser modificados a través de esta página hasta el próximo día 16 de Junio, fecha en la que se procederá al bloqueo del formulario para imprimirlo y entregarlo a los alumnos. Si necesitas cambiar los datos después de esa fecha deberás hacerlo a través de la Jefatura de Estudios. \nSi estás seguro que los datos son correctos y las opciones elegidas son las adecuadas, pulsa el botón ACEPTAR. De lo contrario, el boton CANCELAR te devuelve al formulario de matriculación, donde podrás realizar los cambios que consideres oportunos.")
 	if (answer){
 return true;
 	}
@@ -487,14 +504,14 @@ información sobre el proceso de matriculación.</div>
 	if (substr($row_alma[3],0,2)=="3E"){$curso="4ESO";}
 
 	// Comprobamos si el alumno se ha registrado ya
-	$ya = mysql_query("select apellidos, id, nombre, nacido, provincia, nacimiento, domicilio, localidad, dni, padre, dnitutor, madre, dnitutor2, telefono1, telefono2, colegio, optativa1, optativa2, optativa3, optativa4, correo, exencion, bilinguismo, otrocolegio, letra_grupo, religion, observaciones, act1, act2, act3, act4, optativa21, optativa22, optativa23, optativa24, act21, act22, act23, act24, promociona, transporte, ruta_este, otrocolegio, ruta_oeste, sexo, hermanos, nacionalidad, claveal, matematicas4, itinerario, optativa5, optativa6, optativa7, diversificacion, optativa25, optativa26, optativa27, curso, foto, enfermedad, otraenfermedad, matematicas3 from matriculas where ". $conditio ."");
+	$ya = mysql_query("select apellidos, id, nombre, nacido, provincia, nacimiento, domicilio, localidad, dni, padre, dnitutor, madre, dnitutor2, telefono1, telefono2, colegio, optativa1, optativa2, optativa3, optativa4, correo, exencion, bilinguismo, otrocolegio, letra_grupo, religion, observaciones, act1, act2, act3, act4, optativa21, optativa22, optativa23, optativa24, act21, act22, act23, act24, promociona, transporte, ruta_este, otrocolegio, ruta_oeste, sexo, hermanos, nacionalidad, claveal, matematicas4, itinerario, optativa5, optativa6, optativa7, diversificacion, optativa25, optativa26, optativa27, curso, foto, enfermedad, otraenfermedad, matematicas3, divorcio from matriculas where ". $conditio ."");
 
 	// Ya se ha matriculado
 	if (mysql_num_rows($ya) > 0) {
 		$datos_ya = mysql_fetch_array($ya);
 		$naci = explode("-",$datos_ya[5]);
 		$nacimiento = "$naci[2]-$naci[1]-$naci[0]";
-		$apellidos = $datos_ya[0]; $id = $datos_ya[1]; $nombre = $datos_ya[2]; $nacido = $datos_ya[3]; $provincia = $datos_ya[4]; $domicilio = $datos_ya[6]; $localidad = $datos_ya[7]; $dni = $datos_ya[8]; $padre = $datos_ya[9]; $dnitutor = $datos_ya[10]; $madre = $datos_ya[11]; $dnitutor2 = $datos_ya[12]; $telefono1 = $datos_ya[13]; $telefono2 = $datos_ya[14]; $colegio = $datos_ya[15]; $optativa1 = $datos_ya[16]; $optativa2 = $datos_ya[17]; $optativa3 = $datos_ya[18]; $optativa4 = $datos_ya[19]; $correo = $datos_ya[20]; $exencion = $datos_ya[21]; $bilinguismo = $datos_ya[22]; $otrocolegio = $datos_ya[23]; $letra_grupo = $datos_ya[24]; $religion = $datos_ya[25]; $observaciones = $datos_ya[26]; $act1 = $datos_ya[27]; $act2 = $datos_ya[28]; $act3 = $datos_ya[29]; $act4 = $datos_ya[30]; $optativa21 = $datos_ya[31]; $optativa22 = $datos_ya[32]; $optativa23 = $datos_ya[33]; $optativa24 = $datos_ya[34]; $act21 = $datos_ya[35]; $act22 = $datos_ya[36]; $act23 = $datos_ya[37]; $act24 = $datos_ya[38]; $promociona = $datos_ya[39]; $transporte = $datos_ya[40]; $ruta_este = $datos_ya[41]; $otrocolegio = $datos_ya[42]; $ruta_oeste = $datos_ya[43]; $sexo = $datos_ya[44]; $hermanos = $datos_ya[45]; $nacionalidad = $datos_ya[46]; $claveal = $datos_ya[47]; $matematicas4 = $datos_ya[48]; $itinerario = $datos_ya[49]; $optativa5 = $datos_ya[50];$optativa6 = $datos_ya[51];$optativa7 = $datos_ya[52]; $diversificacion = $datos_ya[53];$optativa25 = $datos_ya[54];$optativa26 = $datos_ya[55];$optativa27 = $datos_ya[56]; $curso = $datos_ya[57]; $foto = $datos_ya[58]; $enfermedad = $datos_ya[59]; $otraenfermedad = $datos_ya[60]; $matematicas3 = $datos_ya[61];
+		$apellidos = $datos_ya[0]; $id = $datos_ya[1]; $nombre = $datos_ya[2]; $nacido = $datos_ya[3]; $provincia = $datos_ya[4]; $domicilio = $datos_ya[6]; $localidad = $datos_ya[7]; $dni = $datos_ya[8]; $padre = $datos_ya[9]; $dnitutor = $datos_ya[10]; $madre = $datos_ya[11]; $dnitutor2 = $datos_ya[12]; $telefono1 = $datos_ya[13]; $telefono2 = $datos_ya[14]; $colegio = $datos_ya[15]; $optativa1 = $datos_ya[16]; $optativa2 = $datos_ya[17]; $optativa3 = $datos_ya[18]; $optativa4 = $datos_ya[19]; $correo = $datos_ya[20]; $exencion = $datos_ya[21]; $bilinguismo = $datos_ya[22]; $otrocolegio = $datos_ya[23]; $letra_grupo = $datos_ya[24]; $religion = $datos_ya[25]; $observaciones = $datos_ya[26]; $act1 = $datos_ya[27]; $act2 = $datos_ya[28]; $act3 = $datos_ya[29]; $act4 = $datos_ya[30]; $optativa21 = $datos_ya[31]; $optativa22 = $datos_ya[32]; $optativa23 = $datos_ya[33]; $optativa24 = $datos_ya[34]; $act21 = $datos_ya[35]; $act22 = $datos_ya[36]; $act23 = $datos_ya[37]; $act24 = $datos_ya[38]; $promociona = $datos_ya[39]; $transporte = $datos_ya[40]; $ruta_este = $datos_ya[41]; $otrocolegio = $datos_ya[42]; $ruta_oeste = $datos_ya[43]; $sexo = $datos_ya[44]; $hermanos = $datos_ya[45]; $nacionalidad = $datos_ya[46]; $claveal = $datos_ya[47]; $matematicas4 = $datos_ya[48]; $itinerario = $datos_ya[49]; $optativa5 = $datos_ya[50];$optativa6 = $datos_ya[51];$optativa7 = $datos_ya[52]; $diversificacion = $datos_ya[53];$optativa25 = $datos_ya[54];$optativa26 = $datos_ya[55];$optativa27 = $datos_ya[56]; $curso = $datos_ya[57]; $foto = $datos_ya[58]; $enfermedad = $datos_ya[59]; $otraenfermedad = $datos_ya[60]; $matematicas3 = $datos_ya[61]; $divorcio = $datos_ya[62];
 		$n_curso = substr($curso,0,1);
 		if ($ruta_error == '1') {
 			$ruta_este = "";
@@ -798,9 +815,9 @@ información sobre el proceso de matriculación.</div>
 			name="religion" value="Religión Evangélica" style="margin: 2px 2px"
 		<? if($religion == 'Religión Evangélica'){echo "checked";} ?> />
 		Religi&oacute;n Evang&eacute;lica<br />
-		<input type="radio" name="religion" value="Valores Ciudadanos"
+		<input type="radio" name="religion" value="Valores Éticos"
 			style="margin: 2px 2px"
-		<? if($religion == 'Valores Ciudadanos'){echo "checked";} ?> />
+		<? if($religion == 'Valores Éticos'){echo "checked";} ?> />
 		<?php if($n_curso == 1 or $n_curso == 3){?>Valores Éticos<? } else { ?>Atención Educativa<? } ?></td>
 	</tr>
 	<?
@@ -880,9 +897,9 @@ información sobre el proceso de matriculación.</div>
 		<td valign=top colspan="1"><?	
 		echo "<label class='radio'><input type='radio' name = 'matematicas3' value='A' ";
 		if ($matematicas3=="A") { echo "checked";}
-		echo " required />Matemáticas Académicas</label><label class='radio'><input type='radio' name = 'matematicas3' value='B' ";
+		echo " required />Matemáticas Académicas (Orientadas al Bachillerato)</label><label class='radio'><input type='radio' name = 'matematicas3' value='B' ";
 		if ($matematicas3=="B") { echo "checked";}
-		echo " required />Matemáticas Aplicadas</label>";
+		echo " required />Matemáticas Aplicadas (Orientadas a la Formación Profesional)</label>";
 		?></td>
 
 		<td colspan="1" style='border-right:none;<? if ($opt_rep == "1") {
@@ -1144,11 +1161,13 @@ información sobre el proceso de matriculación.</div>
 	
 	<!-- ENFERMEDADES -->
 	<tr>
-		<th style="background-color: #eee" colspan="3">ENFERMEDADES DEL ALUMNO
+		<th style="background-color: #eee" colspan="2">ENFERMEDADES DEL ALUMNO
+		</th>
+		<th style="background-color: #eee" colspan="1">SITUACIÓN FAMILIAR
 		</th>
 	</tr>
 	<tr>
-		<td colspan="3" style="border-top: 0;">
+		<td colspan="2" style="border-top: 0;">
 		<p class="help-block"><small> Señalar si el alumno tiene alguna
 		enfermedad que es importante que el Centro conozca por poder afectar a
 		la vida académica del alumno.</small></p>
@@ -1163,6 +1182,19 @@ información sobre el proceso de matriculación.</div>
 			<?php endfor; ?>
 		</select> &nbsp;&nbsp;&nbsp;&nbsp; <input style="<?  if ($enfermedad == 'Otra enfermedad') {	echo "visibility:visible;";}else{	echo "visibility:hidden;background-color:#eec;";}?>" id = "otraenfermedad" name="otraenfermedad" <? if(!($otraenfermedad == 'Escribe aquí el nombre de la enfermedad')){echo "value = \"$otraenfermedad\"";} ?>type="text" class="input-xlarge" placeholder="Escribe aquí el nombre de la enfermedad" onClick="borrar()" />
 		</td>
+			<td style="border-top: 0;">
+			<p class="help-block"><small>
+			Señalar si el alumno procede de padres divorciados y cual es la situación legal de la Guarda y Custodia respecto al mismo.</small></p>
+			<label for="divorcio">Alumno con padres divorciados</label>					 
+			<select
+				class="input input-xlarge" id="divorcio" name="divorcio">
+			<option value=""></option>	
+				<?php for ($i = 0; $i < count($divorciados); $i++): ?>
+				<option value="<?php echo $divorciados[$i]['id']; ?>"
+				<?php echo (isset($divorcio) && $divorcio == $divorciados[$i]['id']) ? 'selected' : ''; ?>><?php echo $divorciados[$i]['nombre']; ?></option>
+				<?php endfor; ?>
+			</select>
+			</td>
 	</tr>
 
 	<!-- FOTO -->
@@ -1173,7 +1205,7 @@ información sobre el proceso de matriculación.</div>
 		<td colspan="3" style="border-top: 0;">
 		<p class="help-block"><small> Desmarcar si la familia tiene algún
 		inconveniente en que se publiquen en nuestra web fotografías del
-		alumno por motivos educativos (Actividaes Complementarias y
+		alumno por motivos educativos (Actividades Complementarias y
 		Extraescolares, etc.)</small></p>
 		<div class="checkbox"><label for="foto"> <? if ($foto==1 or $foto=="") { $extra_foto = "checked";	} else {$extra_foto="";} ?>
 		<input type="checkbox" name="foto" id="foto" value="1"
