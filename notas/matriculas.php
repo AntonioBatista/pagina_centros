@@ -33,12 +33,12 @@ $primaria = '
 </ul>
 ';
      // Comprobamos si la matr&iacute;cula se ha realizado
-if ($nivel == '1B' or $nivel == '4E') {
+if ($nivel == '1º de Ba' or $nivel == '4º de E.') {
 $matriculado_bach = mysql_query("select * from matriculas_bach where claveal = '$claveal'");
-if ($nivel == "4E") {
+if ($nivel == "4º de E.") {
 	$curso_matricula = "1 BACH";
 }
-elseif($nivel == "1B") {
+elseif($nivel == "1º de Ba") {
 	$curso_matricula = "2 BACH";
 }
 ?>
@@ -53,7 +53,7 @@ echo $introduccion;
   <br />
   <form name="matriculacion" action="../matriculas/matriculas_bach.php" method="post" enctype="multipart/form-data">  <input type='hidden' name = 'claveal' value = '<?  echo $claveal;?>' />
   <input type='hidden' name = 'curso' value = '<?php echo $curso_matricula;?>' />
-  <center><input name = "pagina_principal" type="submit" value = "Proceder a la Matriculaci&oacute;n" class="btn btn-primary btn-large" /></center>
+  <center><input name = "pagina_principal" type="submit" value = "Proceder a la Matriculaci&oacute;n" class="btn btn-primary btn-large" />&nbsp;&nbsp;&nbsp;<a href="salir.php" class="btn btn-info btn-large">Salir</a></center>
   </form>
 </div>
 <?
@@ -66,7 +66,7 @@ else{
   <form name="act_matriculacion" action="../matriculas/matriculas_bach.php" method="post" enctype="multipart/form-data">
   <input type='hidden' name = 'claveal' value = '<?  echo $claveal;?>' />
   <input type='hidden' name = 'curso' value = '<?php echo $curso_matricula;?>' />
-  <center><input name = "actualiz" type="submit" value = "Actualizar los datos" class="btn btn-primary"  /></center>
+  <center><input name = "actualiz" type="submit" value = "Actualizar los datos" class="btn btn-primary btn-large"  />&nbsp;&nbsp;&nbsp;<a href="salir.php" class="btn btn-info btn-large">Salir</a></center>
   </form>
   </div>
 <?
@@ -78,11 +78,10 @@ else{
 }
 // Comprobamos si la matr&iacute;cula se ha realizado
 
-elseif (($nivel == '1E' or $nivel == '2E' or $nivel == '3E' or $nivel == '6P')) {
-
+elseif (($nivel == '1º de E.' or $nivel == '2º de E.' or $nivel == '3º de E.' or $_SESSION['esdeprimaria']=="1")) {
 $matriculado_sec = mysql_query("select * from matriculas where claveal = '$claveal'");
 
-if ($nivel=="6P") {
+if ($_SESSION['esdeprimaria']=="1") {
 $curso_matricula = "1 ESO";	
 }
 else{
@@ -97,7 +96,7 @@ $curso_matricula = substr($nivel, 0, 1) + 1 . " ESO";
    <p class="lead" align="center">MATRICULACI&Oacute;N EN <?php echo $curso_matricula;?></p>
 
  <?
- if ($nivel == '6P') {
+ if ($_SESSION['esdeprimaria']=="1") {
  echo $primaria;	
  }
 else{
@@ -108,7 +107,7 @@ else{
 <hr />
   <input type='hidden' name = 'claveal' value = '<?  echo $claveal;?>' />
   <input type='hidden' name = 'curso' value = '<?php echo $curso_matricula;?>' />
-  <center><input name = "pagina_principal" type="submit" value = "Proceder a la Matriculaci&oacute;n" class="btn btn-primary btn-large" /></center>
+  <center><input name = "pagina_principal" type="submit" value = "Proceder a la Matriculaci&oacute;n" class="btn btn-primary btn-large" />&nbsp;&nbsp;&nbsp;<a href="salir.php" class="btn btn-info btn-large">Salir</a></center>
   </form>
 </div>
 <?
@@ -120,7 +119,7 @@ else{
      <form name="transito" action="transito.php" method="post" enctype="multipart/form-data">    
 <hr />
   <input type='hidden' name = 'claveal' value = '<?  //echo $claveal;?>' />
-  <center><input name = "inf_transito" type="submit" value = "Escribir Informe" class="btn btn-primary btn-large" /></center>
+  <center><input name = "inf_transito" type="submit" value = "Escribir Informe" class="btn btn-primary btn-large" />&nbsp;&nbsp;&nbsp;<a href="salir.php" class="btn btn-info btn-large">Salir</a></center>
   </form>
   </div>
   <br />-->
@@ -135,7 +134,7 @@ else{
   <form name="act_matriculacion" action="../matriculas/matriculas.php" method="post" enctype="multipart/form-data">
   <input type='hidden' name = 'claveal' value = '<?  echo $claveal;?>' />
   <input type='hidden' name = 'curso' value = '<?php echo $curso_matricula;?>' />
-  <center><input name = "actualiz" type="submit" value = "Actualizar los datos" class="btn btn-primary"  /></center>
+  <center><input name = "actualiz" type="submit" value = "Actualizar los datos" class="btn btn-primary btn-large"  />&nbsp;&nbsp;&nbsp;<a href="salir.php" class="btn btn-info btn-large">Salir</a></center>
   </form>
 </div>
 <?

@@ -54,6 +54,10 @@ array(
 													'id'     => 'Insuficiencia renal',
 													'nombre' => 'Insuficiencia renal',
 ),
+array(
+													'id'     => 'Otra enfermedad',
+													'nombre' => 'Otra enfermedad',
+),
 );
 
 
@@ -305,7 +309,8 @@ if($_POST['enviar'] =="Enviar los datos de la Matrícula"){
 
 				if (strlen($ruta) > 0) {$transporte = '1';}
 				if (empty($foto)) { $foto = "0";}
-				$con_matr =  "insert into matriculas_bach (apellidos, nombre, nacido, provincia, nacimiento, domicilio, localidad, dni, padre, dnitutor, madre, dnitutor2, telefono1, telefono2, colegio, otrocolegio, letra_grupo, correo, idioma1, idioma2, religion, optativa1, optativa2, optativa2b1, optativa2b2, optativa2b3, optativa2b4, optativa2b5, optativa2b6, optativa2b7, optativa2b8, optativa2b9, optativa2b10, observaciones, curso, fecha, promociona, transporte, ruta_este, ruta_oeste, sexo, hermanos, nacionalidad, claveal, itinerario1, itinerario2, repite, enfermedad, otrenfermedad, foto, bilinguismo, divorcio) VALUES ('$apellidos',  '$nombre', '$nacido', '$provincia', '$fecha_nacimiento', '$domicilio', '$localidad', '$dni', '$padre', '$dnitutor', '$madre', '$dnitutor2', '$telefono1', '$telefono2', '$colegio', '$otrocolegio', '$letra_grupo', '$correo', '$idioma1', '$idioma2', '$religion', '$optativa1', '$optativa2', '$optativa2b1', '$optativa2b2', '$optativa2b3', '$optativa2b4', '$optativa2b5', '$optativa2b6', '$optativa2b7', '$optativa2b8', '$optativa2b9', '$optativa2b10', '$observaciones', '$curso', now(), '$promociona', '$transporte', '$ruta_este', '$ruta_oeste', '$sexo', '$hermanos', '$nacionalidad', '$claveal', '$itinerario1', '$itinerario2', '$repetidor', '$enfermedad', '$otraenfermedad', '$foto', '$bilinguismo', '$divorcio')";
+				$con_matr =  "insert into matriculas_bach (apellidos, nombre, nacido, provincia, nacimiento, domicilio, localidad, dni, padre, dnitutor, madre, dnitutor2, telefono1, telefono2, colegio, otrocolegio, letra_grupo, correo, idioma1, idioma2, religion, optativa1, optativa2, optativa2b1, optativa2b2, optativa2b3, optativa2b4, optativa2b5, optativa2b6, optativa2b7, optativa2b8, optativa2b9, optativa2b10, observaciones, curso, fecha, promociona, transporte, ruta_este, ruta_oeste, sexo, hermanos, nacionalidad, claveal, itinerario1, itinerario2, repite, enfermedad, otraenfermedad, foto, bilinguismo, divorcio) VALUES ('$apellidos',  '$nombre', '$nacido', '$provincia', '$fecha_nacimiento', '$domicilio', '$localidad', '$dni', '$padre', '$dnitutor', '$madre', '$dnitutor2', '$telefono1', '$telefono2', '$colegio', '$otrocolegio', '$letra_grupo', '$correo', '$idioma1', '$idioma2', '$religion', '$optativa1', '$optativa2', '$optativa2b1', '$optativa2b2', '$optativa2b3', '$optativa2b4', '$optativa2b5', '$optativa2b6', '$optativa2b7', '$optativa2b8', '$optativa2b9', '$optativa2b10', '$observaciones', '$curso', now(), '$promociona', '$transporte', '$ruta_este', '$ruta_oeste', '$sexo', '$hermanos', '$nacionalidad', '$claveal', '$itinerario1', '$itinerario2', '$repetidor', '$enfermedad', '$otraenfermedad', '$foto', '$bilinguismo', '$divorcio')";
+				//echo $con_matr;
 				mysql_query($con_matr);
 			}
 			$ya_esta1 = mysql_query("select id from matriculas_bach where $extra");
@@ -326,11 +331,13 @@ if($_POST['enviar'] =="Enviar los datos de la Matrícula"){
 	content="insituto,monterroso,estepona,andalucia,linux,smeserver,tic">
 <title>Páginas del I.E.S. Monterroso</title>
 <link rel="stylesheet"
-	href="<? echo $dominio;?>css/bootstrap.min.css">
+	href="http://<? echo $dominio;?>css/<? echo $css_estilo; ?>">
 <link rel="stylesheet"
-	href="<? echo $dominio;?>css/bootstrap_personal.css">
+	href="http://<? echo $dominio;?>css/bootstrap_personal.css">
+<link href="http://<? echo $dominio;?>css/bootstrap-responsive.min.css"
+	rel="stylesheet">
 <link rel="stylesheet"
-	href="<? echo $dominio;?>css/bootstrap-responsive.min.css">
+	href="http://<? echo $dominio;?>font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 <br />
@@ -338,7 +345,7 @@ if($_POST['enviar'] =="Enviar los datos de la Matrícula"){
 <br />
 <br />
 <div class="alert alert-success"
-	style="width: 500px; margin: auto; text-align: justify;"><br />
+	style="width: 600px; margin: auto; text-align: justify;"><br />
 Los datos de la Matrícula se han registrado correctamente. En los
 próximos días, el Director del Centro o Tutor entregará la documentación
 al alumno. Este la llevará a casa para ser firmada por sus padres o
@@ -351,7 +358,7 @@ en ponerse en contacto con la Adminsitración o Dirección del Centro. <br />
 	enctype="multipart/form-data">
 <center><input type="submit"
 	value="Volver a la página personal del alumno"
-	class="btn btn-warning btn-block btn-large" /></center>
+	class="btn btn-primary btn-block btn-large" /></center>
 </form>
 				<?
 				exit();
@@ -369,11 +376,13 @@ en ponerse en contacto con la Adminsitración o Dirección del Centro. <br />
 	content="insituto,monterroso,estepona,andalucia,linux,smeserver,tic">
 <title>Páginas del I.E.S. Monterroso</title>
 <link rel="stylesheet"
-	href="<? echo $dominio;?>css/bootstrap.min.css">
+	href="http://<? echo $dominio;?>css/<? echo $css_estilo; ?>">
 <link rel="stylesheet"
-	href="<? echo $dominio;?>css/bootstrap_personal.css">
+	href="http://<? echo $dominio;?>css/bootstrap_personal.css">
+<link href="http://<? echo $dominio;?>css/bootstrap-responsive.min.css"
+	rel="stylesheet">
 <link rel="stylesheet"
-	href="<? echo $dominio;?>css/bootstrap-responsive.min.css">
+	href="http://<? echo $dominio;?>font-awesome/css/font-awesome.min.css">
 
 <script type="text/javascript">
 function confirmacion() {
@@ -391,6 +400,14 @@ function dimePropiedades(){
    	var textoEscogido = document.form1.colegio.options[indice].text 
    	if(textoEscogido == "Otro Centro"){
     document.getElementById('otrocolegio').style.visibility='visible'; 
+	}
+	 }
+
+function dimeEnfermedad(){ 
+   	var indice = document.form1.enfermedad.selectedIndex 
+   	var textoEscogido = document.form1.enfermedad.options[indice].text 
+   	if(textoEscogido == "Otra enfermedad"){
+    document.getElementById('otraenfermedad').style.visibility='visible'; 
 	}
 	 }
 	 
@@ -428,8 +445,8 @@ if ($claveal or $id) {
 
 	$curso = str_replace(" ","",$curso);
 	$ya_matricula = mysql_query("select claveal, apellidos, nombre, id from matriculas_bach where ". $conditio ."");
-	$ya_primaria = mysql_query("select claveal, apellidos, nombre from alma_secundaria where ". $conditio1 ."");
-	$ya_alma = mysql_query("select claveal, apellidos, nombre, unidad from alma where (nivel='1B' or nivel='2B' or nivel='4E') and (". $conditio1 .")");
+	$ya_secundaria = mysql_query("select claveal, apellidos, nombre from alma_secundaria where ". $conditio1 ."");
+	$ya_alma = mysql_query("select claveal, apellidos, nombre, unidad from alma where (curso like '1º de B%' or curso like '2º de B%' or curso like '4º de E%') and (". $conditio1 .")");
 
 	// Comprobamos si el alumno se ha registrado ya
 	$ya = mysql_query("select apellidos, nombre, nacido, provincia, nacimiento, domicilio, localidad, dni, padre, dnitutor, madre,
@@ -452,15 +469,14 @@ if ($claveal or $id) {
 	}
 
 	// Viene de Colegio de Secundaria
-	elseif (mysql_num_rows($ya_primaria) > 0){
-		$alma = mysql_query("select apellidos, nombre, provinciaresidencia, fecha, domicilio, localidad, dni, padre, dnitutor, concat(PRIMERAPELLIDOTUTOR2,' ',SEGUNDOAPELLIDOTUTOR2,', ',NOMBRETUTOR2), dnitutor2, telefono, telefonourgencia, correo, concat(PRIMERAPELLIDOTUTOR,' ',SEGUNDOAPELLIDOTUTOR,', ',NOMBRETUTOR), curso, sexo, nacionalidad, grupo, claveal, colegio from alma_secundaria where ". $conditio1 ."");
-
+	elseif (mysql_num_rows($ya_secundaria) > 0){
+		$alma = mysql_query("select apellidos, nombre, provinciaresidencia, fecha, domicilio, localidad, dni, padre, dnitutor, concat(PRIMERAPELLIDOTUTOR2,' ',SEGUNDOAPELLIDOTUTOR2,', ',NOMBRETUTOR2), dnitutor2, telefono, telefonourgencia, correo, concat(PRIMERAPELLIDOTUTOR,' ',SEGUNDOAPELLIDOTUTOR,', ',NOMBRETUTOR), curso, sexo, nacionalidad, unidad, claveal, colegio from alma_secundaria where ". $conditio1 ."");
 		if (mysql_num_rows($alma) > 0) {
 			$al_alma = mysql_fetch_array($alma);
 			$apellidos = $al_alma[0];  $nombre = $al_alma[1]; $nacido = $al_alma[5]; $provincia = $al_alma[2]; $nacimiento = $al_alma[3]; $domicilio = $al_alma[4]; $localidad = $al_alma[5]; $dni = $al_alma[6]; $padre = $al_alma[7]; $dnitutor = $al_alma[8];
 			if (strlen($al_alma[9]) > 3) {$madre = $al_alma[9];	}else{ $madre = ""; }
 			; $dnitutor2 = $al_alma[10]; $telefono1 = $al_alma[11]; $telefono2 = $al_alma[12]; $correo = $al_alma[13]; $padre = $al_alma[14];
-			$n_curso_ya = $al_alma[15]; $sexo = $al_alma[16]; $nacionalidad = $al_alma[17]; $letra_grupo = $al_alma[18]; $claveal= $al_alma[19]; $colegio= $al_alma[20];
+			$n_curso_ya = $al_alma[15]; $sexo = $al_alma[16]; $nacionalidad = $al_alma[17]; $letra_grupo = substr($al_alma[18],0,-1); $claveal= $al_alma[19]; $colegio= $al_alma[20];
 			$nacimiento= str_replace("/","-",$nacimiento);
 			$curso="1BACH";
 			$n_curso=substr($curso, 0, 1);
@@ -469,16 +485,16 @@ if ($claveal or $id) {
 
 	// Es alumno del Centro
 	elseif (mysql_num_rows($ya_alma) > 0){
-		$alma = mysql_query("select apellidos, nombre, provinciaresidencia, fecha, domicilio, localidad, dni, padre, dnitutor, concat(PRIMERAPELLIDOTUTOR2,' ',SEGUNDOAPELLIDOTUTOR2,', ',NOMBRETUTOR2), dnitutor2, telefono, telefonourgencia, correo, concat(PRIMERAPELLIDOTUTOR,' ',SEGUNDOAPELLIDOTUTOR,', ',NOMBRETUTOR), curso, sexo, nacionalidad, grupo, claveal, unidad, combasi, curso, matriculas from alma where (nivel='1b' or nivel='2b' or nivel='4E') and (". $conditio1 .")");
+		$alma = mysql_query("select apellidos, nombre, provinciaresidencia, fecha, domicilio, localidad, dni, padre, dnitutor, concat(PRIMERAPELLIDOTUTOR2,' ',SEGUNDOAPELLIDOTUTOR2,', ',NOMBRETUTOR2), dnitutor2, telefono, telefonourgencia, correo, concat(PRIMERAPELLIDOTUTOR,' ',SEGUNDOAPELLIDOTUTOR,', ',NOMBRETUTOR), curso, sexo, nacionalidad, grupo, claveal, unidad, combasi, curso, matriculas from alma where (curso like '1º de B%' or curso like '2º de B%' or curso like '4º de E%') and (". $conditio1 .")");
 		if (mysql_num_rows($alma) > 0) {
 			$al_alma = mysql_fetch_array($alma);
 			if (empty($curso)) {
-				if (substr($al_alma[20],0,2)=="1B"){$curso="2BACH";}
-				if (substr($al_alma[20],0,2)=="2B"){$curso="2BACH";}
-				if (substr($al_alma[20],0,2)=="4E"){$curso="1BACH";}
+				if (stristr("1º de B%",$al_alma[15])){$curso="2BACH";}
+				if (stristr("2º de B%",$al_alma[15])){$curso="2BACH";}
+				if (stristr("4º de E%",$al_alma[15])){$curso="1BACH";}
 			}
 			else{
-				if (substr($al_alma[20],0,2)=="4E"){$curso="1BACH";}
+				if (stristr("4º de E%",$al_alma[15])){$curso="1BACH";}
 			}
 			$n_curso = substr($curso,0,1);
 
@@ -508,7 +524,7 @@ if ($claveal or $id) {
 	?>
 <br />
 
-<table align="center" class="table table-bordered" style="width: 92%">
+<table align="center" class="table table-bordered" style="width:1000px;">
 	<form id="form1" name="form1" method="post"
 		action="matriculas_bach.php">
 	<tr>
@@ -659,13 +675,13 @@ if ($claveal or $id) {
 			}
 			?>
 		</select> <br />
-		<center><input style="<?  if ($colegio == 'Otro Centro') {	echo "visibility:visible;";}else{	echo "visibility:hidden;background-color:#FFFF66;";}?>margin-top:6px;" id = "otrocolegio" name="otrocolegio" <? if(!($otrocolegio == 'Escribe aquí el nombre del Centro')){echo "value = \"$otrocolegio\"";} ?>type="text" class="input-xlarge" value="Escribe aquí el nombre del Centro" onClick="borrar()" /></center>
-		<input type="hidden" name="letra_grupo"
-		<? echo "value = \"$letra_grupo\""; ?> /></td>
+		<center><input style="<?  if ($colegio == 'Otro Centro') {	echo "visibility:visible;";}else{	echo "visibility:hidden;background-color:#FFFF66;";}?>margin-top:6px;" id = "otrocolegio" name="otrocolegio" <? if(!($otrocolegio == 'Escribe aquí el nombre del Centro')){echo "value = \"$otrocolegio\"";} ?>type="text" class="input-xlarge" value="Escribe aquí el nombre del Centro" placeholder="Escribe aquí el nombre del Centro" onClick="borrar()" /></center>
+		<input type="hidden" name="letra_grupo"	<? echo "value = \"$letra_grupo\""; ?> />
+		</td>
 	</tr>
 
 	<tr>
-		<td valign=top colspan=""><span style="margin: 2 '     x 2px;"><strong>Correo
+		<td valign=top colspan=""><span style="margin: 2 '       x 2px;"><strong>Correo
 		electr&oacute;nico padres</strong>:</span> <input type="text"
 			name="correo" <? echo "value = \"$correo\""; ?> size="48" /></td>
 	</tr>
@@ -785,10 +801,10 @@ if ($claveal or $id) {
 		<? if($religion == 'Religión Evangélica'){echo "checked";} ?> />
 
 				Religi&oacute;n Evang&eacute;lica<br />
-				<input type="radio" name="religion" value="Atención Educativa"
+				<input type="radio" name="religion" value="Valores Ciudadanos"
 					style="margin: 2px 2px"
-		<? if($religion == 'Atención Educativa'){echo "checked";} ?> />
-				Atención Educativa</td>
+		<? if($religion == 'Valores Ciudadanos'){echo "checked";} ?> />
+				Valores Ciudadanos</td>
 			</tr>
 		</table>
 		</td>
@@ -839,7 +855,7 @@ if ($claveal or $id) {
 		}
 		echo " <tr><td colspan='3'>";
 		echo "<table class='table table-bordered table-striped' style='width:100%'><tr>";
-				for ($i = 1; $i < 3; $i++) {
+		for ($i = 1; $i < 3; $i++) {
 			echo "<td align='center' width='25%' valign='bottom'><strong style='font-size:14px'>";
 
 			echo "".${it2.$i}[0]."</strong></td>";
@@ -882,9 +898,8 @@ if ($claveal or $id) {
 		<td colspan="3"
 		<? if ($opt_rep == "1") {
 			echo " style='background-color:yellow;'";
-		} ?>>
-			<?
-		echo "<table class='table table-bordered table-striped' style='width:100%'><tr>";
+		} ?>><?
+			echo "<table class='table table-bordered table-striped' style='width:100%'><tr>";
 			$num1="";
 			foreach ($opt23 as $optit_1 => $nombre){
 
@@ -916,192 +931,190 @@ if ($claveal or $id) {
 			}
 
 			?>
-			</tr>
-		</table>
-		</td>
+	
 	</tr>
-	<?
 
-	if ($repetidor <> 1) {
-		?>
-	<tr id='no_repite1'>
-		<td style="background-color: #CCCCCC;" colspan="3" align="center"><strong>ASIGNATURAS
-		OPTATIVAS DE 1º DE BACHILLERATO</strong><br />
-		<span style="font-size: 10px;">(Para solicitar una modalidad o vía
-		diferente a la que ya has cursado debes pasar por Jefatura de
-		Estudios.)</span></td>
-	</tr>
-	<?
-	echo " <tr><td colspan='3'>";
-		echo "<table class='table table-bordered table-striped' style='width:100%'><tr>";
-		for ($i = 1; $i < 3; $i++) {
-		echo "<td align='center' width='25%' valign='bottom'><strong>";
+</table>
+</td>
+</tr>
+			<?
 
-		echo "".${it1.$i}[0]."</strong></td>";
-	}
-	echo "</tr><tr>";
-	for ($i = 1; $i < 3; $i++) {
-		echo "<td align='left' class='it' valign='top'>";
-		$num1=$i;
-		$num_it=count(${opt1.$i});
-		foreach (${opt1.$i} as $optit_1 => $nombre){
-			$pos="";
-			$num1+=1;
-			if (${optativa.$num1}=="0") {${optativa.$num1}="";}
-			echo '<input type="radio" value="'.$optit_1.'" name="mod1" ';
-			if ($optativa1 == $optit_1) {
-				echo ' checked';
-			}
-			else{
-				if(strstr($curso_largo,${it1.$i}[3])==FALSE){
-					echo " disabled";
+			if ($repetidor <> 1) {
+				?>
+<tr id='no_repite1'>
+	<td style="background-color: #CCCCCC;" colspan="3" align="center"><strong>ASIGNATURAS
+	OPTATIVAS DE 1º DE BACHILLERATO</strong><br />
+	<span style="font-size: 10px;">(Para solicitar una modalidad o vía
+	diferente a la que ya has cursado debes pasar por Jefatura de
+	Estudios.)</span></td>
+</tr>
+				<?
+				echo " <tr><td colspan='3'>";
+				echo "<table class='table table-bordered table-striped' style='width:100%'><tr>";
+				for ($i = 1; $i < 3; $i++) {
+					echo "<td align='center' width='25%' valign='bottom'><strong>";
+
+					echo "".${it1.$i}[0]."</strong></td>";
 				}
-				$combas = explode(":", $combasi);
-				foreach ($combas as $com){
-					$q1 = "select abrev from asignaturas where codigo = '$com' and abrev not like '%\_%'";
-					$q2.=$q1."<br>";
-					$abrv = mysql_query($q1);
-					$abrev = mysql_fetch_array($abrv);
-					$q7.="$optit_1 ==> $abrev[0] --> $com<br>";
-					if (strstr($optit_1,$abrev[0])==TRUE) {
-						$pos+=1;
-					}
-				}
-				if ($matriculas > "1"){
-					$bd_ant = $db.substr($curso_actual,0,4);
-					$q5="select combasi from ". $bd_ant  .".alma where claveal = '$claveal' ";
-					$q6.=$q5."<br>";
-					$ant = mysql_query($q5);
-					$ant_comb = mysql_fetch_array($ant);
-					$combasi_ant = $ant_comb[0];
-					$combas_anti = explode(":", $combasi_ant);
-					foreach ($combas_anti as $com_ant){
-						$q3 = "select abrev from ".$bd_ant.".asignaturas where codigo = '$com_ant'";
-						$q4.=$q3."<br>";
-						$abrv_ant = mysql_query($q3);
-						$abrev_ant = mysql_fetch_array($abrv_ant);
-						$asig_ant = $abrev_ant[0];
-						if (strstr($optit_1,$abrev_ant[0])==TRUE) {
-							$pos+=1;
+				echo "</tr><tr>";
+				for ($i = 1; $i < 3; $i++) {
+					echo "<td align='left' class='it' valign='top'>";
+					$num1=$i;
+					$num_it=count(${opt1.$i});
+					foreach (${opt1.$i} as $optit_1 => $nombre){
+						$pos="";
+						$num1+=1;
+						if (${optativa.$num1}=="0") {${optativa.$num1}="";}
+						echo '<input type="radio" value="'.$optit_1.'" name="mod1" ';
+						if ($optativa1 == $optit_1) {
+							echo ' checked';
 						}
+						else{
+							if(strstr($curso_largo,${it1.$i}[3])==FALSE){
+								echo " disabled";
+							}
+							$combas = explode(":", $combasi);
+							foreach ($combas as $com){
+								$q1 = "select abrev from asignaturas where codigo = '$com' and abrev not like '%\_%'";
+								$q2.=$q1."<br>";
+								$abrv = mysql_query($q1);
+								$abrev = mysql_fetch_array($abrv);
+								$q7.="$optit_1 ==> $abrev[0] --> $com<br>";
+								if (strstr($optit_1,$abrev[0])==TRUE) {
+									$pos+=1;
+								}
+							}
+							if ($matriculas > "1"){
+								$bd_ant = $db.substr($curso_actual,0,4);
+								$q5="select combasi from ". $bd_ant  .".alma where claveal = '$claveal' ";
+								$q6.=$q5."<br>";
+								$ant = mysql_query($q5);
+								$ant_comb = mysql_fetch_array($ant);
+								$combasi_ant = $ant_comb[0];
+								$combas_anti = explode(":", $combasi_ant);
+								foreach ($combas_anti as $com_ant){
+									$q3 = "select abrev from ".$bd_ant.".asignaturas where codigo = '$com_ant'";
+									$q4.=$q3."<br>";
+									$abrv_ant = mysql_query($q3);
+									$abrev_ant = mysql_fetch_array($abrv_ant);
+									$asig_ant = $abrev_ant[0];
+									if (strstr($optit_1,$abrev_ant[0])==TRUE) {
+										$pos+=1;
+									}
+								}
+							}
+							if ($pos>$i-1) {
+								echo " checked";
+							}
+
+							else{
+								echo " disabled";
+							}
+						}
+						echo '  style="margin: 2px 2px" >';
+						//echo "select abrev from ".$bd_ant.".asignaturas where codigo = '$com_ant'";
+						echo '<span style="margin:2px 2px" >'.$nombre.'</span><br />';
 					}
+					echo "</td>";
 				}
-				if ($pos>$i-1) {
-					echo " checked";
-				}
-					
-				else{
-					echo " disabled";
-				}
+				echo "</tr></table></td></tr>";
+				?>
+				<?
 			}
-			echo '  style="margin: 2px 2px" >';
-			//echo "select abrev from ".$bd_ant.".asignaturas where codigo = '$com_ant'";
-			echo '<span style="margin:2px 2px" >'.$nombre.'</span><br />';
-		}
-		echo "</td>";
-	}
-	echo "</tr></table></td></tr>";
-	?> <?
-	}
 	}
 
 
 	?>
+
+<!-- BILINGÜISMO -->
+	<?php if(substr($curso, 0, 1) < 2): ?>
+<tr>
+	<td colspan="3">
+	<div class="form-group">
+	<div class="checkbox"><label> <input type="checkbox" name="bilinguismo"
+		value="Si" <? if($bilinguismo == 'Si'){echo "checked";} ?>> El
+	alumno/a solicita participar en el programa de bilingüismo (Inglés) </label></div>
+	</div>
+	</td>
+</tr>
+	<? endif; ?>
 	
-		<!-- BILINGÜISMO -->
-		<?php if(substr($curso, 0, 1) < 2): ?>
-		<tr>
-			<td colspan="4">
-			<div class="form-group">
-			<div class="checkbox"><label> <input type="checkbox"
-				name="bilinguismo" value="Si"
-				<? if($bilinguismo == 'Si'){echo "checked";} ?>> El alumno/a
-			solicita participar en el programa de bilingüismo (Inglés) </label></div>
-			</div>
-			</td>
-		</tr>
-		<? endif; ?>
-		<!-- ENFERMEDADES -->
-		<tr>
-			<th class="active text-center" colspan="4"><span class="text-uppercase">Enfermedades del Alumno:</span><p class="help-block"><small>
-			Señalar si el alumno tiene alguna enfermedad que es importante que el
-			Centro conozca por poder afectar a la vida académica del alumno.</small></p></th>
-		</tr>
-		<tr>
-			<td colspan="4" style="border-top: 0;">
-			<p class="help-block"><small>
-			Señalar si el alumno tiene alguna enfermedad que es importante que el Centro conozca por poder afectar a la vida académica del alumno.</small></p>
-		<div
-				class="form-group col-sm-5">
-			<label for="enfermedad">Enfermedades del Alumno</label>					 
-			<select
-				class="form-control" id="enfermedad" name="enfermedad">
-			<option value=""></option>	
-				<?php for ($i = 0; $i < count($enfermedades); $i++): ?>
-				<option value="<?php echo $enfermedades[$i]['id']; ?>"
-				<?php echo (isset($enfermedad) && $enfermedad == $enfermedades[$i]['id']) ? 'selected' : ''; ?>><?php echo $enfermedades[$i]['nombre']; ?></option>
-				<?php endfor; ?>
-				<option value="Otra enfermedad">Otra enfermedad</option>
-			</select></div>
-			
-			<div id="form-otraenfermedad"
-				class="form-group <?php echo (isset($otraenfermedad) && !empty($otraenfermedad)) ? '' : 'hidden'; ?> col-sm-7">
-			<label for="otraenfermedad">Otras enfermedades</label>
-			<input type="text"
-				class="form-control" id="otraenfermedad" name="otraenfermedad"
-				value="<?php echo (isset($otraenfermedad)) ? $otraenfermedad : ''; ?>"
-				maxlength="60" placeholder="Escribe aquí el nombre de la enfermedad"> 
-				</div>
-			</td>
-</tr>	
+<!-- ENFERMEDADES -->
+<tr>
+	<th style="background-color:#eee" colspan="3">ENFERMEDADES DEL ALUMNO
+	</th>
+</tr>
+<tr>
+	<td colspan="3" style="border-top: 0;">
+	<p class="help-block"><small> Señalar si el alumno tiene alguna
+	enfermedad que es importante que el Centro conozca por poder afectar a
+	la vida académica del alumno.</small></p>
 
-		<!-- FOTO -->
-		<tr>
-			<th class="active text-center" colspan="4"><span class="text-uppercase">Foto del Alumno:</span><p class="help-block"><small>
-			Desmarcar si la familia tiene algún inconveniente en que se publiquen en nuestra web fotografías del alumno por motivos educativos (Actividaes Complementarias y Extraescolares, etc.)</small></p></th>
-		</tr>
+	<label for="enfermedad">Enfermedades del Alumno</label> <select
+		class="form-control" id="enfermedad" name="enfermedad"
+		onChange="dimeEnfermedad()">
+		<option value=""></option>
+		<?php for ($i = 0; $i < count($enfermedades); $i++): ?>
+		<option value="<?php echo $enfermedades[$i]['id']; ?>"
+		<?php echo (isset($enfermedad) && $enfermedad == $enfermedades[$i]['id']) ? 'selected' : ''; ?>><?php echo $enfermedades[$i]['nombre']; ?></option>
+		<?php endfor; ?>
+	</select> &nbsp;&nbsp;&nbsp;&nbsp; <input style="<?  if ($enfermedad == 'Otra enfermedad') {	echo "visibility:visible;";}else{	echo "visibility:hidden;background-color:#eec;";}?>" id = "otraenfermedad" name="otraenfermedad" <? if(!($otraenfermedad == 'Escribe aquí el nombre de la enfermedad')){echo "value = \"$otraenfermedad\"";} ?>type="text" class="input-xlarge" placeholder="Escribe aquí el nombre de la enfermedad" onClick="borrar()" />
+	</td>
+</tr>
 
-		<!-- OBSERVACIONES -->			
-	<tr>
-		<td valign=top colspan="3"><strong>OBSERVACIONES</strong>: <br />
-		Indique aquellas cuestiones que considere sean importantes para
-		conocimiento del Centro (enfermedades,  situación familiar, etc.) <br />
-		<textarea name="observaciones" id="textarea" rows="5"
-			style="width: 98%" onKeyDown="contar('form1','observaciones')"
-			onkeyup="contar('form1','observaciones')"><? echo $observaciones; ?></textarea>
-		</td>
-	</tr>
+<!-- FOTO -->
+<tr>
+<th style="background-color:#eee" colspan="3">FOTOGRAFÍA DEL ALUMNO
+	</th>
+</tr>
+<tr>
+	<td colspan="3" style="border-top: 0;">
+	<p class="help-block"><small> Desmarcar si la familia tiene algún
+	inconveniente en que se publiquen en nuestra web fotografías del alumno
+	por motivos educativos (Actividaes Complementarias y Extraescolares,
+	etc.)</small></p>
+	<div class="checkbox"><label for="foto"> <? if ($foto==1 or $foto=="") { $extra_foto = "checked";	} else {$extra_foto="";} ?>
+	<input type="checkbox" name="foto" id="foto" value="1"
+	<? echo $extra_foto;?>> Foto del Alumno </label></div>
+	</td>
+</tr>
 
-	<tr>
-		<td colspan="3" style="border-bottom: none">
+<!-- OBSERVACIONES -->
+<tr>
+	<td valign=top colspan="3"><strong>OBSERVACIONES</strong>: <br />
+	Indique aquellas cuestiones que considere sean importantes para
+	conocimiento del Centro (enfermedades,  situación familiar, etc.) <br />
+	<textarea name="observaciones" id="textarea" rows="5"
+		style="width: 98%" onKeyDown="contar('form1','observaciones')"
+		onkeyup="contar('form1','observaciones')"><? echo $observaciones; ?></textarea>
+	</td>
+</tr>
 
-		<center><br />
-		<input type="hidden" name="curso" value="<? echo $curso;?>" /> <input
-			type="hidden" name="nuevo" value="<? echo $nuevo;?>" /> <input
-			type="hidden" name="curso_matricula"
-			value="<? echo $curso_matricula;?>" /> <input type="hidden"
-			name="claveal" <? echo "value = \"$claveal\""; ?> /> <input
-			type="hidden" name="repetidor" value="<? echo $repetidor;?>" /> <?
-			$c_act = substr($curso_actual,0,4)+1;
-			$fech_cad = "20-06-".$c_act." 00:00:00";
-			$fecha_entrada = strtotime($fech_cad);
-			$fecha_actual = strtotime(date("d-m-Y H:i:00",time()));
-			if($fecha_actual < $fecha_entrada){
-				//echo '<input type=hidden name="enviar" value="Enviar los datos de la Matrícula" />';
-				//echo '<input type=button onClick="confirmacion();" value="Enviar los datos de la Matrícula" class="no_imprimir btn btn-primary btn-large" />';
-			}
-			?> <br />
-		<br />
-		</center>
-		</td>
-	</tr>
-	</form>
+<tr>
+	<td colspan="3" style="border-bottom: none">
+
+	<center>
+	<input type="hidden" name="curso" value="<? echo $curso;?>" /> <input
+		type="hidden" name="nuevo" value="<? echo $nuevo;?>" /> <input
+		type="hidden" name="curso_matricula"
+		value="<? echo $curso_matricula;?>" /> <input type="hidden"
+		name="claveal" <? echo "value = \"$claveal\""; ?> /> <input
+		type="hidden" name="repetidor" value="<? echo $repetidor;?>" /> 
+		<?
+		if (date('m')=='06') {
+			echo '<input type=hidden name="enviar" value="Enviar los datos de la Matrícula" />';
+			echo '<input type=button onClick="confirmacion();" value="Enviar los datos de la Matrícula" class="no_imprimir btn btn-primary btn-large" />';
+		}
+		?> <br />
+	</center>
+	</td>
+</tr>
+</form>
 </table>
 
-			<?
+		<?
 }
 ?>
 <br />
 
-</body>
-</html>
+<?php include("../pie.php"); ?>
