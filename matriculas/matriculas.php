@@ -29,9 +29,9 @@ mysql_select_db ($db);
 ?>
 <?
 // Ajustes LOMCE
-$m3 = mysqli_query($db_con,"select matematicas3 from matriculas");
+$m3 = mysql_query("select matematicas3 from matriculas");
 if(!$m3){
-mysqli_query($db_con,"ALTER TABLE  `matriculas` ADD  `matematicas3` CHAR( 1 ) NOT NULL");
+mysql_query("ALTER TABLE  `matriculas` ADD  `matematicas3` CHAR( 1 ) NOT NULL");
 }
 
 // Divorcios
@@ -536,7 +536,7 @@ información sobre el proceso de matriculación.</div>
 
 	// Es alumno del Centro
 	elseif (mysql_num_rows($ya_alma) > 0){
-		$alma = mysql_query("select apellidos, nombre, provinciaresidencia, fecha, domicilio, localidad, dni, padre, dnitutor, concat(PRIMERAPELLIDOTUTOR2,' ',SEGUNDOAPELLIDOTUTOR2,', ',NOMBRETUTOR2), dnitutor2, telefono, telefonourgencia, correo, concat(PRIMERAPELLIDOTUTOR,' ',SEGUNDOAPELLIDOTUTOR,', ',NOMBRETUTOR), curso, sexo, nacionalidad, grupo, claveal, unidad from alma where (curso like '1º de E%' or curso like '2º de E%' or curso like '3º de E%' or curso like '4º de E%') and (". $conditio1 .")");
+		$alma = mysql_query("select apellidos, nombre, provinciaresidencia, fecha, domicilio, localidad, dni, padre, dnitutor, concat(PRIMERAPELLIDOTUTOR2,' ',SEGUNDOAPELLIDOTUTOR2,', ',NOMBRETUTOR2), dnitutor2, telefono, telefonourgencia, correo, concat(PRIMERAPELLIDOTUTOR,' ',SEGUNDOAPELLIDOTUTOR,', ',NOMBRETUTOR), curso, sexo, nacionalidad, grupo, claveal, unidad, localidadnacimiento from alma where (curso like '1º de E%' or curso like '2º de E%' or curso like '3º de E%' or curso like '4º de E%') and (". $conditio1 .")");
 		if (mysql_num_rows($alma) > 0) {
 			$al_alma = mysql_fetch_array($alma);
 
@@ -548,7 +548,7 @@ información sobre el proceso de matriculación.</div>
 			$apellidos = $al_alma[0];  $nombre = $al_alma[1]; $nacido = $al_alma[5]; $provincia = $al_alma[2]; $nacimiento = $al_alma[3]; $domicilio = $al_alma[4]; $localidad = $al_alma[5]; $dni = $al_alma[6]; $padre = $al_alma[7]; $dnitutor = $al_alma[8];
 			if ($madre == "") { if (strlen($al_alma[9]) > 3) {$madre = $al_alma[9];	}else{ $madre = ""; }}
 			if ($dnitutor2 == "") { $dnitutor2 = $al_alma[10];} if ($telefono1 == "") { $telefono1 = $al_alma[11]; } if ($telefono2 == "") { $telefono2 = $al_alma[12];} if ($correo == "") { $correo = $al_alma[13];} $padre = $al_alma[14];
-			$n_curso_ya = $al_alma[15]; $sexo = $al_alma[16]; $nacionalidad = $al_alma[17]; $letra_grupo = $al_alma[18]; $claveal= $al_alma[19];
+			$n_curso_ya = $al_alma[15]; $sexo = $al_alma[16]; $nacionalidad = $al_alma[17]; $letra_grupo = $al_alma[18]; $claveal= $al_alma[19]; $nacido = $al_alma[21];
 
 			if (substr($curso,0,1) == substr($n_curso_ya,0,1)) {
 				echo '
@@ -1232,7 +1232,7 @@ información sobre el proceso de matriculación.</div>
 			type="hidden" name="curso_matricula"
 			value="<? echo $curso_matricula;?>" /> <input type="hidden"
 			name="claveal" <? echo "value = \"$claveal\""; ?> /> <? 
-			if (date('m')=='06' and (date('d')>'01' and date('d')<'19')) {
+			if (date('m')=='06' and (date('d')>'01' and date('d')<'18')) {
 				echo '<input type="submit" name="enviar" value="Enviar los datos de la Matrícula" onClick="confirmacion();" class="no_imprimir btn btn-primary btn-large" />';
 			}
 		 ?> 
