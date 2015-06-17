@@ -1257,10 +1257,18 @@ if ($claveal or $id) {
 		name="claveal" <? echo "value = \"$claveal\""; ?> /> <input
 		type="hidden" name="repetidor" value="<? echo $repetidor;?>" /> 
 		<?
-		if (date('m')=='06' and (date('d')>'01' and date('d')<'18')) {
+		if (stristr($colegio,$nombre_corto)==TRUE) {
+				if (date('m')=='06' and (date('d')>'01' and date('d')<'18')) {
 			echo '<input type=hidden name="enviar" value="Enviar los datos de la Matrícula" />';
 			echo '<input type=button onClick="confirmacion();" value="Enviar los datos de la Matrícula" class="no_imprimir btn btn-primary btn-large" />';
-		}
+			}
+			}
+			else{
+			if (date('m')=='06' and (date('d')>'01' and date('d')<'17')) {
+			echo '<input type=hidden name="enviar" value="Enviar los datos de la Matrícula" />';
+			echo '<input type=button onClick="confirmacion();" value="Enviar los datos de la Matrícula" class="no_imprimir btn btn-primary btn-large" />';
+			}
+			}
 		?> <br />
 	</center>
 	</td>

@@ -1232,8 +1232,15 @@ información sobre el proceso de matriculación.</div>
 			type="hidden" name="curso_matricula"
 			value="<? echo $curso_matricula;?>" /> <input type="hidden"
 			name="claveal" <? echo "value = \"$claveal\""; ?> /> <? 
-			if (date('m')=='06' and (date('d')>'01' and date('d')<'18')) {
+			if (stristr($colegio,$nombre_corto)==TRUE) {
+				if (date('m')=='06' and (date('d')>'01' and date('d')<'18')) {
 				echo '<input type="submit" name="enviar" value="Enviar los datos de la Matrícula" onClick="confirmacion();" class="no_imprimir btn btn-primary btn-large" />';
+			}
+			}
+			else{
+			if (date('m')=='06' and (date('d')>'01' and date('d')<'19')) {
+				echo '<input type="submit" name="enviar" value="Enviar los datos de la Matrícula" onClick="confirmacion();" class="no_imprimir btn btn-primary btn-large" />';
+			}
 			}
 		 ?> 
 		<br />

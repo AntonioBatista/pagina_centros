@@ -19,7 +19,7 @@ else{
 	$claveal_sha = sha1($clave_al);
 		
 	// Es un alumno de Primaria
-	$al_primaria = "SELECT distinct APELLIDOS, NOMBRE, matriculas, edad, curso, claveal, unidad, dni, correo, colegio FROM alma_primaria WHERE dnitutor = '$clave_al' or claveal = '$clave_al'";
+	$al_primaria = "SELECT distinct APELLIDOS, NOMBRE, matriculas, edad, curso, claveal, unidad, dni, correo, colegio FROM alma_primaria WHERE dnitutor = '$clave_al' or dnitutor2 = '$clave_al' or claveal = '$clave_al'";
 	//echo $al_primaria;
 	$alum_primaria = mysql_query($al_primaria);
 	$es_primaria = mysql_num_rows($alum_primaria);
@@ -44,7 +44,7 @@ include "../cabecera.php";
 }	
 
 // Es un alumno de Secundaria
-	$al_secundaria = "SELECT distinct APELLIDOS, NOMBRE, matriculas, edad, curso, claveal, unidad, dni, correo, colegio FROM alma_secundaria WHERE dnitutor = '$clave_al' or claveal = '$clave_al'";
+	$al_secundaria = "SELECT distinct APELLIDOS, NOMBRE, matriculas, edad, curso, claveal, unidad, dni, correo, colegio FROM alma_secundaria WHERE dnitutor = '$clave_al' or dnitutor2 = '$clave_al' or claveal = '$clave_al'";
 	//echo $al_secundaria;
 	$alum_secundaria = mysql_query($al_secundaria);
 	$es_secundaria = mysql_num_rows($alum_secundaria);
