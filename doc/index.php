@@ -282,7 +282,7 @@ function listing($current_dir)
 	$list_file = '';
 	while (false !== ($filename = readdir($handle)))
     {
-	    if ($filename != '.' && $filename != '..'
+	    if ($filename != '.' && $filename != '..' && $filename != 'Recursos educativos'
 //	    	&& !eregi("\.desc$|\.dlcnt$|^index\.", $filename)
 	    	&& show_hidden_files($filename))
 		{
