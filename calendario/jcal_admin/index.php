@@ -107,8 +107,6 @@ echo "<legend class='text-warning'>Actividades del día</legend>";
 		  
 $sql_date = "$year-$month-$today";
 $eventQuery = "SELECT distinct nombre, descripcion, id, unidades, concat(horaini,' - ', horafin) FROM calendario WHERE date(fechaini)='$sql_date' and categoria < '3'";
-//echo $eventQuery;
-//$eventQuery = "SELECT title, event, idact FROM cal WHERE eventdate = '$sql_date'";
 $eventExec = mysql_query($eventQuery);
 if (mysql_num_rows($eventExec)>0) {
 
@@ -120,9 +118,10 @@ while($row = mysql_fetch_array($eventExec)) {
    $idact = $row[2];
    $grupos = $row[3];
    $horario = $row[4];
-   echo "<p class='lead text-success'>$title </p><p class='text-info'>$descripcion<p>";
+   echo "<p class='text-info'>$title </p><p>$descripcion<p>";
    if(strlen($grupos)>1){
-  	echo "<p class='text-info'><b>Grupos que participan:</b> $grupos</p><p class='text-info'><b>Horario:</b> $horario</p>";
+  	echo "<p class='text-info'>Grupos que participan:</p> <p>$grupos</p>
+  	<p class='text-info'>Horario:</p> <p>$horario</p>";
    }
    echo "<hr>";
    
@@ -207,7 +206,7 @@ for ($zz = 1; $zz <= $numdays; $zz++) {
 	if ($result_found != 1) { //Buscar actividad para el dóa y marcarla
 		$sql_currentday = "$year-$month-$zz";
 
-		$eventQuery = "SELECT nombre FROM calendario WHERE fechaini = '$sql_currentday'";
+		$eventQuery = "SELECT nombre FROM calendario WHERE fechaini = '$sql_currentday' and categoria < '3'";
 		//echo $eventQuery;
 		$eventExec = mysql_query ( $eventQuery );
 		if (mysql_num_rows($eventExec)>0) {

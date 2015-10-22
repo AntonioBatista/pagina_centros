@@ -24,10 +24,7 @@ if (mysql_num_rows($result) > 0)
 <hr />   
  <form class="form-search" action="noticias/buscar.php">       
 <a href="noticias/list.php" class="btn btn-success">Más Noticias</a>
-    <div class="input-append pull-right">
-    <input class="span9 search-query" type="text" name="expresion" placeholder="Buscar en las Noticias" />
-    <button type="submit" class="btn btn-success">Buscar</button>
-  </div>
+	
 </form> 	
 <br />
 <? if ($monterroso==1) { ?>

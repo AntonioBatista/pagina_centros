@@ -100,7 +100,7 @@ estas páginas cuando el Tutor confirme haberlo recibido.</div><br /><br />";
 
 <input name="clave_al" type="hidden"
 	value="<? echo $_SESSION['clave_al'];?>" /> <input type="submit"
-	name="submit" value="Enviar" onclick="submit()" class="btn btn-primary btn-large" />
+	name="submit" value="Enviar" onclick="submit()" class="btn btn-primary" />
 </form>
 <hr />
 <p class="muted">Este formulario permite enviar un mensaje al <em>Tutor
@@ -124,7 +124,7 @@ where destino like '%".$_SESSION['alumno']."%'");
 	<br />
 	<?
 	$hist10 = mysql_query("select ahora, asunto, texto, origen from mens_texto where
-destino like '%".$_SESSION['alumno']."%'");
+destino like '%".$clave_al."%'");
 	while ($hist1 = mysql_fetch_array($hist10)) {
 		$trozos = explode(", ", $hist1[3]);
 		$pr_mens = "$trozos[1] $trozos[0]";

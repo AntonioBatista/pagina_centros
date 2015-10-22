@@ -23,7 +23,8 @@ exit;
    echo "<p class='lead muted' align='center'><i class='icon icon-plus-sign'> </i> Actividades Complementarias y Extraescolares del Grupo 
 $unidad</p><br />";
 
-  $datos0 = "select unidades, descripcion, departamento, profesores, concat (horaini,' - ', horafin), concat(fechaini,' - ',fechafin), profesorreg, nombre from calendario where unidades like '%$curso%' and date(fechaini)>'$inicio_curso' and categoria = '2' order by fechaini";
+  $datos0 = "select unidades, descripcion, departamento, profesores, concat(horaini,' - ', horafin), concat(fechaini,' - ',fechafin), profesorreg, nombre from calendario where unidades like '%$curso%' and date(fechaini)>'$inicio_curso' and categoria = '2' order by fechaini";
+//echo $datos0;
   $datos1 = mysql_query($datos0);
   if(mysql_num_rows($datos1)>0){
   while($datos = mysql_fetch_array($datos1))

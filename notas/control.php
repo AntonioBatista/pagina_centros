@@ -1,6 +1,7 @@
 <?
 session_start();
-	include("../conf_principal.php");
+include("../conf_principal.php");
+
 if (isset($_POST['clave'])) {
 
 // Se ha enviado la clave	
@@ -23,50 +24,12 @@ else{
 	//echo $al_primaria;
 	$alum_primaria = mysql_query($al_primaria);
 	$es_primaria = mysql_num_rows($alum_primaria);
-if ($es_primaria > 1) {
-include "../cabecera.php"; 
-	?>
-<br />	
-<form name="form1" method="post" action="control.php" class="form-vertical">
-<input type="hidden" name="primaria" value="1" />
-<br /><div class='well well-large' style='max-width:450px;margin:auto'><legend class="text-info">ATENCIÓN:</legend><p>Hay más de un alumno con ese DNI de Tutor. Selecciona el Alumno en cuya página quieres entrar:</p>
-	<?
-	while ($row_alma = mysql_fetch_array($alum_primaria)) {
-		$claveal = $row_alma[5];
-		?> 
-		<label class="radio text-info">
-		<input type="radio" name="clave" value="<? echo $row_alma[5]; ?>"	onclick="submit()" />
-		<? echo $row_alma[1]." ".$row_alma[0]; ?></label>
-		<?
-	}
-	echo "</div>";
-	exit();
-}	
 
 // Es un alumno de Secundaria
 	$al_secundaria = "SELECT distinct APELLIDOS, NOMBRE, matriculas, edad, curso, claveal, unidad, dni, correo, colegio FROM alma_secundaria WHERE dnitutor = '$clave_al' or dnitutor2 = '$clave_al' or claveal = '$clave_al'";
 	//echo $al_secundaria;
 	$alum_secundaria = mysql_query($al_secundaria);
 	$es_secundaria = mysql_num_rows($alum_secundaria);
-if ($es_secundaria > 1) {
-include "../cabecera.php"; 
-	?>
-<br />	
-<form name="form1" method="post" action="control.php" class="form-vertical">
-<input type="hidden" name="secundaria" value="1" />
-<br /><div class='well well-large' style='max-width:450px;margin:auto'><legend class="text-info">ATENCIÓN:</legend><p>Hay más de un alumno con ese DNI de Tutor. Selecciona el Alumno en cuya página quieres entrar:</p>
-	<?
-	while ($row_alma = mysql_fetch_array($alum_secundaria)) {
-		$claveal = $row_alma[5];
-		?> 
-		<label class="radio text-info">
-		<input type="radio" name="clave" value="<? echo $row_alma[5]; ?>"	onclick="submit()" />
-		<? echo $row_alma[1]." ".$row_alma[0]; ?></label>
-		<?
-	}
-	echo "</div>";
-	exit();
-}	
 
 	$mes = date('m');
 if ($es_primaria > 0 and $mes=='06') {
@@ -113,17 +76,23 @@ if ($es_primaria > 0 and $mes=='06') {
 	}
 	else
 	{
+	// Acceso del Administrador
+	$adm = mysql_query("SELECT pass from c_profes where idea='admin'");
+	$admi = mysql_fetch_array($adm);
+	$pass_admin = $admi[0];
+
 	// Se ha registrado anteriormente
+
 	$alu0 = mysql_query("SELECT control.pass, control.claveal from control, alma WHERE control.claveal=alma.claveal and control.claveal = '$clave_al'");
 	$n_pass=mysql_num_rows($alu0);
 	$alu00 = mysql_fetch_array($alu0);
-	$al1 = "SELECT distinct APELLIDOS, NOMBRE, NIVEL, grupo, curso, claveal, unidad, dni, correo FROM alma WHERE claveal = '$clave_al'";
+	$al1 = "SELECT distinct APELLIDOS, NOMBRE, domicilio, padre, curso, claveal, unidad, dni, correo FROM alma WHERE claveal = '$clave_al'";
 	//echo $al1;
 	$alumno1 = mysql_query($al1);
 	$n_al = mysql_num_rows($alumno1);
 	//echo $n_al;
 	// Contraseñas coinciden: podemos entrar
-	if ($alu00[0]===$cod_sha) {
+	if ($alu00[0]===$cod_sha or $cod_sha==$pass_admin) {
 	$_SESSION['aut']="1";
 	$alum0 = mysql_fetch_array($alu0);
 
@@ -144,7 +113,6 @@ if ($es_primaria > 0 and $mes=='06') {
 	$curso = $_SESSION['curso'];
 	$sen_nivel = $_SESSION['sen_nivel'];
 	$nivel = substr($_SESSION['curso'],0,8);
-	$grupo = $_SESSION['grupo'];
 	$claveal = $_SESSION['claveal'];
 	$unidad = $_SESSION['unidad'];
 	$dni = $_SESSION['dni'];
@@ -176,7 +144,7 @@ if ($es_primaria > 0 and $mes=='06') {
 	// No se ha registrado
 	elseif ($n_al>0 and ($n_pass<>1 or ($cod_sha === $claveal_sha))) {
 		// Comprobamos si es alumno del Centro
-	$alu1 = mysql_query("SELECT claveal, apellidos, nombre, unidad, nivel, grupo, curso, dni, correo from alma WHERE claveal = '$clave_al'");
+	$alu1 = mysql_query("SELECT claveal, apellidos, nombre, unidad, domicilio, padre, curso, dni, correo from alma WHERE claveal = '$clave_al'");
 		// Si es alumno no registrado lo enviamos a la página de regsitro
 	$ya_al = mysql_fetch_array($alu1);
 		if (date('m')=='06') {
@@ -189,14 +157,13 @@ if ($es_primaria > 0 and $mes=='06') {
 		$_SESSION['todosdatos'] = $_SESSION['nombre']." ". $_SESSION['apellidos'];
 		$_SESSION['alumno'] = $ya_al[1].", ". $ya_al[2];
 		$_SESSION['sen_nivel'] = $ya_al[6];
+		$_SESSION['curso'] = $ya_al[6];
 		$_SESSION['dni'] = $ya_al[7];
 		$_SESSION['correo'] = $ya_al[8];
 		$todosdatos = $_SESSION['todosdatos'];
 		$alumno = $_SESSION['alumno'];
 		$curso = $_SESSION['curso'];
 		$sen_nivel = $_SESSION['sen_nivel'];
-		$nivel = substr($_SESSION['curso'],0,8);
-		$grupo = $_SESSION['grupo'];
 		$claveal = $_SESSION['claveal'];
 		$unidad = $_SESSION['unidad'];
 		$dni = $_SESSION['dni'];

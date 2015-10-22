@@ -107,7 +107,7 @@ echo "<div class='muted' align=center style='text-align:left'>Haz click en \"Exa
 		echo "<hr /><div align=center><img src='./muestra_imagen.php?clave_al=$clave_al' width='200' height='238' class='img-polaroid' /></div><br />";
 	}
 	else {
-			echo "<hr /><div class='alert alert-warning'><h4>Atenci&oacute;n:</h4>Te recordamos que es <b><u>obligación</u></b> del alumno/a subir una fotografía como parte del proceso de matriculación en el Centro. <br /><strong>Sigue las instrucciones de esta página y hazlo cuanto antes.</strong></div><br />";
+			echo "<hr /><div class='alert alert-warning'><h5>Atenci&oacute;n:</h5><p>Te recordamos que es <b><u>obligación</u></b> del alumno/a subir una fotografía como parte del proceso de matriculación en el Centro. <br /><strong>Sigue las instrucciones de esta página y hazlo cuanto antes.</strong></p></div>";
 	}
 
   ?>

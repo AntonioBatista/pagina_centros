@@ -28,33 +28,24 @@ else{
 
 <div class="span8 offset2">
 
-<div class="well well-large" align="center">
+
 
 <form action="index.php" method="post" id="textos">
-<p class="lead muted">Selecciona NIVEL y GRUPO:</p>
+<div class="well well-large" align="center">
+<p class="lead muted">Selecciona NIVEL:</p>
 <hr />
-<select name="nivel" class="input" style="width: 60%"
-	onchange="submit()">
+<select name="nivel" class="input" style="width: 60%">
 	<?
 	if(isset($_POST['nivel'])){echo "<option>".$nivel."</option>";}else{echo '<option>Selecciona NIVEL</option>';}
 	nivel_completo();
 	?>
 
-</select> <select name="grupo" id="select7" class="input"
-	style="width: 20%">
-	<?
-	if(isset($_POST['grupo'])){echo "<option>".$grupo."</option>";}
-	elseif(isset($_POST['nivel'])){echo '<option>Selecciona GRUPO</option>';}
-
-	?>
-	<?
-	grupo_completo($nivel);
-	?>
-</select>
+</select> 
 <hr />
 <input type="submit" name="enviar22" value="Buscar Textos"
-	class="btn btn-primary btn-block btn-large" /></form>
+	class="btn btn-primary btn-block" />
 </div>
+</form>
 	<? if(!(isset($_POST['enviar22']))){ ?>
 <div class="well well-large well-transparent">
 <h4 class="muted">Notas sobre la Consulta de los Libros de Texto.</h4>

@@ -29,7 +29,7 @@ Informe sobre Faltas de Asistencia y Problemas de Convivencia</p>";
  ?>
 <br /><h4 >Faltas de Asistencia en este Curso</h4><br />
 <?php $result = mysql_query("SELECT DISTINCT fecha FROM FALTAS WHERE claveal = '$clave_al' ORDER BY fecha DESC"); ?>
-<?php if (mysql_num_rows($result)): ?>
+<?php if (mysql_num_rows($result)){ ?>
 
 	<table class="table table-bordered table-striped table-hover" style="width:700px;">
 			<tr class="text-info">
@@ -63,9 +63,11 @@ Informe sobre Faltas de Asistencia y Problemas de Convivencia</p>";
 		</tbody>
 	</table>
 
-<?php endif; ?>
-
-<?
+<?php } else { 
+	echo "<div class='alert alert-info' style=' 
+max-width:450px;margin:auto'>El Alumno no tiene Faltas de Asistencia al Centro 
+registradas en este Curso Escolar.</div><br />";
+}
 echo "<hr /><br /><h4 >Problemas de Convivencia en este Curso</h4><br />";
   mysql_connect ($host, $user, $pass);
   mysql_select_db ($db);
@@ -93,7 +95,7 @@ $row[0], $row[1], $row[2], $row[3]);
 echo "</tbody></table>\n";
         } else 
 		{
-			echo "<div class='alert alert-success' style=' 
+			echo "<div class='alert alert-info' style=' 
 max-width:450px;margin:auto'>El Alumno no tiene Problemas de Convivencia 
 registrados en este Curso Escolar.</div><br />";
 		}

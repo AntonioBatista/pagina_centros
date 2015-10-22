@@ -58,7 +58,7 @@ while($dep = mysql_fetch_row($dep1))
 	}
 	echo "</ul>";
 	if ($mod_departamentos==1) {
-	echo '<a href="http://'.$dominio.'doc/index.php?&direction=0&order=&directory=departamentos/';
+	echo '<a href="http://'.$dominio.'doc/index.php?&direction=0&order=&directory=Departamentos/';
 	if($departamento == 'Matemáticas') $departamento = "Matemáticas";
 	if($departamento == 'Lengua Castellana') $departamento = "Lengua Castellana y Literatura";
 	if($departamento == 'Lengua Extranjera-Inglés') $departamento = "Inglés";

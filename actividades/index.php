@@ -30,7 +30,7 @@ $mes1 = $mes[0];
   
   echo "<br><legend class='text-warning'>$mes2</legend>";
 	
-  $datos0 = "select unidades, descripcion, departamento, profesores, concat(horaini,' - ', horafin), concat(fechaini,' - ',fechafin), profesorreg, nombre from calendario where month(fechaini)='$mes1' and categoria = '2' order by id";
+  $datos0 = "select unidades, descripcion, departamento, profesores, concat(horaini,' - ', horafin), concat(fechaini,' - ',fechafin), profesorreg, nombre from calendario where month(fechaini)='$mes1' and categoria = '2' and date(fechaini)>'$inicio_curso'  order by id";
   $datos1 = mysql_query($datos0);
   if(mysql_num_rows($datos1)>0){
   while($datos = mysql_fetch_array($datos1))
@@ -61,7 +61,7 @@ else{
 }
   ?>
       <div class="well well-large span10" align='left'>
-          <h4 class="text-success"><? echo $datos[7];?></h4>
+          <h5 class="text-success"><? echo $datos[7];?></h5>
           <hr>
       <dl class="dl-horizontal">
 
@@ -86,9 +86,7 @@ else{
   }
   
   else{
-echo "<div class='alert alert-warning' style='max-width:450px;margin:auto'>El 
-grupo $unidad no tiene programada ninguna Actividad Complementaria durante este 
-curso a día de hoy.</div></div>";	  
+echo "</div>";	  
   }
 }
 ?>

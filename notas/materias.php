@@ -21,7 +21,7 @@ exit;
   ?>
 <?
     echo "<h3 align='center'>$todosdatos<br /></h3>
-    <div class='container'>
+
     <div class='row'>";
   		echo "<p class='lead muted' align='center'><i class='icon icon-edit'> </i> Asignaturas y Profesores del Alumno en el Curso</p><hr />";
 		$SQLP = "select tutor from FTUTORES where unidad = '$unidad'";
@@ -29,11 +29,11 @@ exit;
   if ($rowP = mysql_fetch_array($resultP))
         {
 echo '<br><div class="well well-large span6 offset3">';	
-echo "<h4 align='center'>Tutor del Grupo $unidad.</h4>";
+echo "<h5 align='center'>Tutor del Grupo $unidad.</h5>";
 
                 do {
                 	$tr_tut = explode(", ",$rowP[0]);
-				echo "<h4 align='center' class= 'text-success'>$tr_tut[1] $tr_tut[0]</h4>";
+				echo "<h5 align='center' class= 'text-success'>$tr_tut[1] $tr_tut[0]</h5>";
         } while($rowP = mysql_fetch_array($resultP));
 		echo "</div></div>";	
 		}
@@ -52,7 +52,7 @@ foreach ($tr_combasi as $codigo){
 	}	
 }
 
-echo "</table></div></div>";
+echo "</table></div>";
 ?>
 </div>
 </div>

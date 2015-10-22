@@ -24,7 +24,7 @@ include("conf_principal.php");
 ?>
 <div class="navbar hidden-print">
   <div class="navbar-inner" style="padding-left:0px">
-      <img src="http://<? echo $dominio;?>logo.gif" class="img-polaroid img-rounded pull-left"  width="60" style="margin-right:30px;margin-left:0px;padding:3px;background-color:#fafafa"/>
+      <img src="http://<? echo $dominio;?>logo.gif" class="img-polaroid img-rounded pull-left"  width="60" style="margin:5px;margin-right:30px;padding:3px;background-color:#fafafa"/>
 		    <div class="container-fluid">
 		      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 		        <span class="icon-bar"></span>
@@ -41,15 +41,20 @@ include("conf_principal.php");
  		  <li><a href="<? echo $enlace_moodle;?>">Moodle</a></li>
  		  <? } ?>
 		        </ul>
+<? if (strstr($_SERVER['REQUEST_URI'],'index.php')==TRUE) {
+?>
                       <form class="form-search navbar-search pull-right"  action="http://www.google.com/custom" method="get">
     <input type="hidden" name="sitesearch" value="<? echo $dominio;?>" checked="checked" />                 
     <input type="hidden" name="cof" value="S:http://<? echo $dominio;?>;AH:center;L:ies.gif;AWFID:12e022daa787c23d;" />
     <input type="hidden" name="domains" value="<? echo $dominio;?>" />
+    <div class="form-search">
       	<div class="input-append">
-    <input type="text" class="search-query span2" placeholder="Buscar en <? echo $nombre_del_centro;?>" name="q" onClick="this.value=''">
+    <input type="text" class="" name="q" placeholder="Buscar en <? echo $nombre_del_centro;?>" onClick="this.value=''">
     <button type="submit" class="btn btn-success"><i class="icon icon-search"></i></button>
-  		</div>    
+  		</div> 
+  		</div>   
 </form>
+<? } ?>
 		      </div>
 		      </div>
 		    </div>

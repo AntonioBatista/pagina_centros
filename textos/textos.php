@@ -1,6 +1,5 @@
 <?
-	$titulo = "$nivel";
-	if($grupo and $grupo!=="Selecciona GRUPO"){$titulo.=" - $grupo";}
+	$titulo = "$nivel";	
 	echo "<p class='lead muted' align='center'>$titulo";
 	echo "<br />Curso Escolar $curso_textos</p>";
 

@@ -24,7 +24,9 @@ exit;
 	 else{
    echo "<p class='lead muted' align='center'><i class='icon icon-calendar'> </i> Horario del Grupo $unidad</p><hr />";
   ?>
-  <br><div class="span10 offset1">
+  <br>
+  <div class="row">
+  <div class="span10 offset1">
 <table class="table table-bordered table-striped">
     <tr class='text-info'> 
       <th></th>
@@ -79,6 +81,7 @@ echo "</table>";
 mysql_query("DROP TABLE asig_tmp");
      ?>
      </div>
+	 </div>
 	 </div>
  <? include "../pie.php"; ?>
 

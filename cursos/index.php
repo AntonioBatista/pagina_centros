@@ -22,7 +22,7 @@ if($tab==""){
 <li <? echo $activo12;?>><a href="#tab2" data-toggle="tab">Bachillerato</a></li>
 <li <? echo $activo13;?>><a href="#tab3" data-toggle="tab">Guía, Información y Asistencia Turísticas</a></li>
 <li <? echo $activo14;?>><a href="#tab4" data-toggle="tab">Atención a Personas en Situación de Dependencia</a></li>
-<li <? echo $activo15;?>><a href="#tab5" data-toggle="tab">PCPI</a></li>
+<li <? echo $activo15;?>><a href="FPBasica.pdf">Formación Pofesional Básica</a></li>
 </ul>
 
 <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
@@ -52,7 +52,7 @@ include("sociosanitario.php");
 </div>
 <div class="tab-pane fade in <? echo $activo25;?>" id="tab5">
 <?
-echo "<br /><p class='lead muted' align='center'><i class='icon icon-book'> </i> Programas de Cualificación Profesional: Auxiliar Informático</p><hr />";
+echo "<br /><p class='lead muted' align='center'><i class='icon icon-book'> </i> Formación Pofesional Básica</p><hr />";
 include("pcpi.php");
 ?>
 </div>

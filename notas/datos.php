@@ -27,7 +27,7 @@ $alumno = $_SESSION['alumno'];
 	echo "<div class='container'><div class='row'><div class='span10 
 offset1'><br /><h3 align='center'>".$_SESSION['todosdatos']."<br /></h3><legend 
 align='center' class='muted'>Colegio ".$_SESSION['colegio']."</legend>";	
-	include("matriculas.php");
+	 include("matriculas.php");
 	exit();
 	}
 	
@@ -101,7 +101,7 @@ $actualiza = mysql_query("insert into mensajes
 
 $men1 = "select ahora, asunto, texto, profesor, id_profe, origen from 
 mens_profes, mens_texto where mens_texto.id = mens_profes.id_texto and profesor 
-= '$alumno' and recibidoprofe = '0'";
+= '$clave_al' and recibidoprofe = '0'";
 //echo $men1;
 $men2 = mysql_query($men1);
 if(mysql_num_rows($men2) > 0)
@@ -124,9 +124,10 @@ $fechaenv = "el $fech[2] del $fech[1] de $fech[0], a las $fechacompl[1]";
 <button type="button" class="close" data-dismiss="alert">&times;</button>
 <a data-toggle="modal" href="#mensaje<? echo $n_mensajes;?>"  rel="tooltip" 
 title="<? echo substr($texto,0,132)."...";?>">
-<p><? echo $asunto; ?></p>
+<p class='text-error'><? echo $asunto; ?></p>
 </a>
 <p><i class="icon-comment"> </i>  <? echo "".$origen."";?></p>
+<small>Enviado <? echo "$fechaenv";?></small>
 </div>
 
 <div class="modal hide fade" id="mensaje<? echo $n_mensajes;?>">
@@ -155,11 +156,12 @@ btn-danger">Leído</a>
 </form>
 </div>
 </div>
-<br /><br />
+<br />
 <?
 }
 }
 
+echo "<br>";
   
   $SQL = "select distinct apellidos, nombre, UNIDAD, DNI, fecha, 
 domicilio, codpostal, localidadnacimiento, telefono, telefonourgencia, control.correo, 

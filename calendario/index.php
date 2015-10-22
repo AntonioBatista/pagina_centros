@@ -143,7 +143,7 @@ $rango7 = date ( 'Y-m-d');
 $query = "SELECT distinct nombre, fechaini FROM calendario WHERE date(fechaini)>='$rango7' and categoria < '3' order by fechaini limit 5";
 $result = mysql_query ( $query );
 if (mysql_num_rows ( $result ) > 0) {
-	echo '<li class="nav-header" style="margin-bottom:5px;"><i  class="icon-list"></i><small> Próximos días</li><br>';
+	echo '<li class="nav-header" style="margin-bottom:5px;"><i  class="icon-list"></i><small> Próximos días</li>';
 	while ( $row = mysql_fetch_array ( $result ) ) {
 		$trozos = explode ( "-", $row[1] );
 		$ano = $trozos [0];

@@ -174,6 +174,7 @@ $fec = strtr($fec,"/","-");
 $fec_ok=explode("-",$fec);
 return ($fec_ok[2]." de ".elmes($fec_ok[1])." de ".$fec_ok[0]);
 }
+
 function fecha_actual($valor_fecha){
 
 /*    if($valor_fecha == ""){

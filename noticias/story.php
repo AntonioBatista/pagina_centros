@@ -1,6 +1,7 @@
 <?  include("../conf_principal.php"); ?>
 <?  include("../cabecera.php"); ?>
 <?  include("../menu.php"); ?>
+<? include("../funciones.php"); ?>
 <?
 if (isset($_GET['id'])) {
 	$id = $_GET['id'];
@@ -12,10 +13,6 @@ if (isset($_GET['id'])) {
 <h3 align="center"><i class='icon icon-list-alt'> </i> Notas, Noticias, Novedades ...</h3>
 <hr />
 		  <?
-// includes
-include("../conf_principal.php");
-include("../funciones.php");
-
 mysql_connect($host, $user, $pass) or die ("Imposible conectar!");
 
 mysql_select_db($db) or die ("Imposible seleccionar base de datos!");
@@ -27,13 +24,14 @@ $row = mysql_fetch_object($result);
 
 if ($row)
 {
-
+$tr = explode(" ",$row->timestamp);
 ?>
+  <br>
   <p class="lead text-info"><? print $row->slug; ?></p>
-  <hr />
-  <blockquote><? print stripslashes($row->content);?></blockquote>    
+
+  <p><? print stripslashes($row->content);?></p>    
   <footer class="footer well well-small">                                      
-  <p class="muted">Publicada el <? echo formatea_fecha($row->timestamp); ?>.</p>
+  Publicada el <? echo formatea_fecha($tr[0])." a las ".$tr[1]; ?>.
   </footer>
     <?
 }

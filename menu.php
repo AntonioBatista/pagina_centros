@@ -28,7 +28,7 @@ if ($monterroso=="1") {
     <li><a  href="http://<? echo $dominio;?>cursos/index.php?tab=2">Bachillerato</a></li>
     <li><a  href="http://<? echo $dominio;?>cursos/index.php?tab=3">Ciclo de Turismo</a></li>
     <li><a  href="http://<? echo $dominio;?>cursos/index.php?tab=4">Ciclo Sociosanitario</a></li>
-    <li><a  href="http://<? echo $dominio;?>cursos/index.php?tab=5">PCPI</a></li>
+    <li><a  href="http://<? echo $dominio;?>cursos/FPBasica.pdf">Formación Pofesional Básica</a></li>
     <li><a  href="http://<? echo $dominio;?>textos/index.php">Libros de Texto</a></li>
 </ul>
 </div>

@@ -9,7 +9,7 @@ exit;
 	$claveal = $_SESSION['clave_al'];
 	$todosdatos = $_SESSION['todosdatos'];
 	$unidad = $_SESSION['unidad'];
-	$sen_nivel = $_SESSION['sen_nivel'];
+	$sen_nivel = $_SESSION['curso'];
 	include("../conf_principal.php");
 	include("../funciones.php");
 	mysql_connect ($host, $user, $pass);
@@ -35,7 +35,7 @@ echo "<tr class='text-info'><th>
 	EDITORIAL</th><th>
 	TIPO</th></tr>";
 
-$textos0 = "SELECT distinct Asignatura, Departamento, Autor, Titulo, Editorial, Obligatorio, Nivel, Grupo FROM Textos where Nivel like '" . $sen_nivel . "%' and Grupo like '%" .$grupo ."%' order by Asignatura";
+$textos0 = "SELECT distinct Asignatura, Departamento, Autor, Titulo, Editorial, Obligatorio, Nivel, Grupo FROM Textos where Nivel like '" . $_SESSION['curso'] . "%' and Grupo like '%" .$_SESSION['unidad'] ."%' order by Asignatura";
 $textos = mysql_query($textos0);
 while($row = mysql_fetch_array($textos))
    {
@@ -48,5 +48,7 @@ echo "</table>";
 </div>
    </div><!-- Central -->
 </div><!-- Contenedor -->
+<br>
+ <? include "../pie.php"; ?>
 </body>
 </html>
