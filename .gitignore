@@ -11,6 +11,4 @@
 
 *.name
 
-conf_principal.php
-
 notas/files/.htaccess
